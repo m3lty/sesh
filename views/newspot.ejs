@@ -1,0 +1,12 @@
+<% include partials/header %>
+<form action="/newspot" method="POST">
+    <input type="text" name="spotName">
+    <input type="text" name="location">
+    <select name="state">
+        <% for (var i =0; i < stateList.length; i++){ %>
+            <option value="<%=stateList[i]%>"><%=stateList[i]%></option>
+        <% } %>
+    </select>
+    <button name="button">Submit</button>
+</form>
+<% include partials/footer %>

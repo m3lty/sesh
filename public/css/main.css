@@ -1,0 +1,10 @@
+#indexHeader {
+    background-image: url("/img/header.jpg");
+    height: 350px;
+    background-position: center;
+    color: white;
+}
+#indexHeader h1 {
+    padding-top: 10%;
+
+}

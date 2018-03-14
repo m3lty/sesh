@@ -1,0 +1,31 @@
+<% include partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col text-center" id="indexHeader">
+            <h1>SESH</h1>
+            <small>Cool places, good vibes.</small>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate adipisci inventore impedit 
+            voluptatibus debitis! Dolor reiciendis facilis iste rem in, sint accusamus ex accusantium dolorum ea magni 
+            consectetur nesciunt quos?</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+        <h2>Choose a State</h2>
+        <!-- showing list of all states -->
+        <div class="row">
+            <% for (var i = 0 ; i < stateList.length; i++ ){ %>
+                <div class="col-4">
+                    <a href="/state/<%=stateList[i]%>"><%= stateList[i] %></a>
+                </div>
+                
+            <% } %>
+        </div>
+        
+        </div>
+    </div>
+</div>
+<% include partials/footer %>
