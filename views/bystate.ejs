@@ -1,6 +1,6 @@
 <% include partials/header %>
 <h1><%=state%></h1>
 <% for(var i = 0; i < localSpot.length; i++){ %>
-    <%= localSpot[i].name %>
+   <a href="/spots/<%=localSpot[i]._id %>"> <%= localSpot[i].name %> </a>
 <% } %>
 <% include partials/footer %>

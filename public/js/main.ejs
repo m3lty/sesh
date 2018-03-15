@@ -1,0 +1,14 @@
+<%
+perState = function(state, spots){
+    console.log("EJS function is firing." + state);
+    var numPer = 0;
+    for (var i = 0; i < spots.length; i++){
+        console.log("Running Loop for: " + spots[i].name);
+        if(spots[i].state == state){
+            numPer++;
+        
+        }
+    }
+    return numPer;
+}
+%>

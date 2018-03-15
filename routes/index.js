@@ -6,10 +6,21 @@ var path = require("path");
 var fs = require("fs");
 var states = fs.readFileSync("states.txt").toString();
 var stateList = states.split("\r\n");
+var Spots = require("../models/spot");
 
 router.get("/", function(req, res){
-    res.render("home", {stateList:stateList});
+    Spots.find({}, function(err, allSpots){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("home", {stateList:stateList, allSpots:allSpots });
+
+        }
+
+    })
 
 });
 
 module.exports = router;
+
+

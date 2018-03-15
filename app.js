@@ -8,6 +8,7 @@ const passport = require("passport");
 const localStrategy = require("passport-local");
 const indexRoute = require("./routes/index");
 const spotRoute = require("./routes/spots");
+const angular = require("angular");
 var Spots = require("./models/spot");
 
 app.use(express.static(path.join(__dirname,'public')));
