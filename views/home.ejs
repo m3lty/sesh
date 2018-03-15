@@ -13,18 +13,18 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-        <h2>Choose a State</h2>
+        <div class="col" id="indexContent">
+            <h2>Choose a State</h2>
+            <a href="/spots/newspot"><p>(Or add your own!)</p></a>
         <!-- showing list of all states -->
-        <div class="row">
-            <% for (var i = 0 ; i < stateList.length; i++ ){ %>
-                <div class="col-4">
-                    <a href="/state/<%=stateList[i]%>"><%= stateList[i] %></a>
-                </div>
+            <div class="row">
+                <% for (var i = 0 ; i < stateList.length; i++ ){ %>
+                    <div class="col-4">
+                        <a href="/spots/bystate/<%=stateList[i]%>"><%= stateList[i] %></a>
+                    </div>
                 
-            <% } %>
-        </div>
-        
+                <% } %>
+            </div>
         </div>
     </div>
 </div>

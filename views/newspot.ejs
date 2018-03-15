@@ -1,12 +1,29 @@
 <% include partials/header %>
-<form action="/newspot" method="POST">
-    <input type="text" name="spotName">
-    <input type="text" name="location">
-    <select name="state">
-        <% for (var i =0; i < stateList.length; i++){ %>
-            <option value="<%=stateList[i]%>"><%=stateList[i]%></option>
-        <% } %>
-    </select>
-    <button name="button">Submit</button>
-</form>
+
+<div class="container">
+    <div class="row">
+        <div class=col>
+            <form>
+                <div class="form-group">
+                    <label for="spotName">Spot Name</label>
+                    <input type="text" name="spotName" id="spotName" class="form-control">
+                    <label for="location">Location</label>
+                    <input type="text" name="spotName" aria-describedby="locHelp" id="name" class="form-control">
+                    <small id="locHelp" class="form-text text-muted">(Closest physical address to the entrance, try Google Maps!)</small>
+                    <label for="state">State:</label>
+                    <select name="state" id="state" class="form-control">
+                            <% for (var i =0; i < stateList.length; i++){ %>
+                                <option value="<%=stateList[i]%>"><%=stateList[i]%></option>
+                            <% } %>
+                    </select>
+                    <button name="button" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+            <a href="/"><p>Back to Index</p></a>
+        </div>
+    </div>
+</div>
+
+
+
 <% include partials/footer %>
