@@ -5,6 +5,7 @@ var SpotSchema = new mongoose.Schema({
     state:String,
     lat: String,
     lng: String,
+    img: String
 },{usePushEach: true})
 
 module.exports = mongoose.model("Spot", SpotSchema);

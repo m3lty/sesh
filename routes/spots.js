@@ -1,21 +1,34 @@
 var express = require("express");
 var router = express.Router();
-var path = require("path");
+
 var mongoose = require("mongoose");
+var multer = require("multer");
+var path = require("path");
 var fs = require("fs");
 var states = fs.readFileSync("states.txt").toString();
 var stateList = states.split("\r\n");
 var Spots = require("../models/spot");
+
+
+var upload = multer({storage: multer.diskStorage({
+    destination: function(req, file, callback){
+      callback(null, "public/img/spots");
+    },
+    filename: function(req, file, callback){
+      callback(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+    }})
+  });
 //New Spot logic
 router.get("/newspot", function(req, res){
     res.render("newspot", {stateList:stateList});
 });
 
-router.post("/", function(req, res){
+router.post("/", upload.single("spotImg"), function(req, res){
     var newSpot = new Spots({
         name: req.body.spotName,
         lat: req.body.lat,
         lng: req.body.long,
+        img: req.file.path.slice(6),
         state: req.body.state
     });
 
