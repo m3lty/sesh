@@ -8,7 +8,7 @@ const passport = require("passport");
 const localStrategy = require("passport-local");
 const indexRoute = require("./routes/index");
 const spotRoute = require("./routes/spots");
-const angular = require("angular");
+
 var Spots = require("./models/spot");
 
 app.use(express.static(path.join(__dirname,'public')));
@@ -46,7 +46,7 @@ app.use("/spots", spotRoute);
 
 
 app.listen(3000, function(){
-    console.log("Sesh is listening on port 300");
+    console.log("Sesh is listening on port 3000");
 });
 
 function stateMatch(spot) {

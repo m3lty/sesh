@@ -1,17 +1,11 @@
 <% include ../partials/header %>
 <h1><%=spot.name%></h1>
 <h2><%=spot.lat %></h2>
-
 <div id="map"></div>
 
-<script>    var spot = <%= spot %>;
-    passSpot(spot)  
-    </script>
 <script>
-    var lat = <%= spot.lat %>;
-    var lng = <%= spot.lng %>;
-
-    initLoc(lat, lng);
+    var newSpot = <%- JSON.stringify(spot) %>;
+    passSpot(newSpot);
 </script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaJ5R-GLdIW9KPG1fQWm2LyjQC77x0Dk4&callback=initMap">
