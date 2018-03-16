@@ -8,7 +8,9 @@ const passport = require("passport");
 const localStrategy = require("passport-local");
 const indexRoute = require("./routes/index");
 const spotRoute = require("./routes/spots");
+const userRoute = require("./routes/users");
 
+var User = require("./models/user");
 var Spots = require("./models/spot");
 
 app.use(express.static(path.join(__dirname,'public')));
@@ -18,30 +20,31 @@ mongoose.connect("mongodb://localhost/sesh");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 //PASSPORT SET UP==============================
-// app.set('views', path.join(__dirname, 'views'));
-// app.use(require("express-session")({
-//   secret:"Oppai Oppai Oppai",
-//   resave: false,
-//   saveUninitialized: false
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.set('views', path.join(__dirname, 'views'));
+app.use(require("express-session")({
+  secret:"Oppai Oppai Oppai",
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
-// passport.use(new localStrategy(User.authenticate()));
+passport.use(new localStrategy(User.authenticate()));
 
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
-// app.use(function(req, res, next){
-//   res.locals.currentUser = req.user;
-//   next();
-// });
+app.use(function(req, res, next){
+  res.locals.currentUser = req.user;
+  next();
+});
 //===========================================
 
 
 //Connecting route folders
 app.use("/", indexRoute);
 app.use("/spots", spotRoute);
+app.use("/users", userRoute);
 //SHOWS SPOTS BY STATE
 
 

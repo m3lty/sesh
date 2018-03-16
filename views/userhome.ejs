@@ -1,0 +1,22 @@
+<% include partials/header %>
+<% include partials/navbar %>
+<div class="container">
+  <div class="row">
+    <% include partials/sidebar %>
+
+    <div class="col-12 col-md-9  col-sm-10 homeContent">
+      <a href="cosplay/new">
+        <button class="btn btn-primary" type="button" name="button">
+          New Cosplay
+        </button>
+      </a>
+
+      <h3>Upcoming Conventions</h3>
+      <% include partials/upcomingCons %>
+      <h3>Newest Cosplay </h3>
+      <% include partials/newCosplay %>
+    </div>
+</div>
+</div>
+
+<% include partials/footer %>

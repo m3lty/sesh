@@ -12,24 +12,31 @@ function passSpot(passedSpot) {
 //Intializes Google Map
 function initMap() {
     var paCenter = {lat:40.925999, lng: -77.594152} //Initial location for map placement
-    
+
     // Create a map object and specify the DOM element for display.
     var map = new google.maps.Map(document.getElementById('map'), {
       center: paCenter,
       zoom: 8
     });
+    //draws the window - 300px wide
     var infowindow = new google.maps.InfoWindow({
-        maxWidth: 300
+        maxWidth: 300,
     });
-    //Placing Markers for each Spot in database
+
+    //using Jquery to add style to whole InfoWindow
+    google.maps.event.addListenerOnce(map, 'idle', function(){
+        jQuery('.gm-style-iw').prev('div').remove();
+    });
+
+    
     for(var i = 0; i < spot.length; i++ ){
         latLng = {lat: parseFloat(spot[i].lat), lng: parseFloat(spot[i].lng)};
-
+        //Placing Markers for each Spot in database
         markers = new google.maps.Marker({
             position: latLng,
             map: map
         });          
-        
+        // adding listeners to each marker for launch and info window when clicked
         google.maps.event.addListener(markers, "click", (function(markers, i) {
             return function() {
                 content = contentAdd(spot[i]);
@@ -41,9 +48,15 @@ function initMap() {
     }
 }
 //===================================
+//
+//     Info Window contents
+//
+
 function contentAdd(spot){
-    return ('<div class="infoContainer">'+
+    return ('<div class="infoContainer text-center">'+
+                    '<div class="interior">' +
                    '<h2>'+ spot.name + '</h2>' +
-                    '<img src=' + spot.img + '>' +   
+                    '<img src=' + spot.img + '>' +  
+                    '</div>' + 
             '</div>')
 }

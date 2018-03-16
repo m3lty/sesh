@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+<!--- Show Attending conventions --->
+<div class="container">
+  <div class="row">
+    <% include ../partials/sidebar %>
+        <div class="col-6 col-md-3 profileAvatar" >
+          <img src="<%= user.avatar %>">
+        </div>
+        <div class="col col-md-6 align-self-right">
+          <h1><%= user.username %> </h1>
+
+          <% if(user.socialmedia.twitter) { %>
+            <a href="http://twitter.com/<%=user.socialmedia.twitter %>"><i class="fa fa-twitter"></i> <%=user.socialmedia.twitter%></a>
+          <% }; %>
+          <% if(user.socialmedia.instagram) { %>
+            <a href="#"><i class="fa fa-instagram"></i> <%=user.socialmedia.instagram%></a>
+          <% }; %>
+          <% if(user.socialmedia.facebook) { %>
+            <a href="#"><i class="fa fa-facebook"></i> <%=user.socialmedia.facebook%></a>
+          <% }; %>
+          <% if(user.socialmedia.tumblr) { %>
+            <a href="#"><i class="fa fa-tumblr"></i> <%=user.socialmedia.tumblr%></a>
+          <% }; %>
+          <p class="bioBlurb"><%= user.bio %></p>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col col-md-9">
+          <hr>
+          <h2><%= user.username %>'s cosplays:</h2>
+          <% include ../partials/userCosplays %>
+          <h2><%= user.username %>'s upcoming conventions.</h2>
+          
+        </div>
+      </div>
+
+
+</div>
+<% include ../partials/footer %>
