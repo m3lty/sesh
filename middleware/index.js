@@ -1,23 +1,32 @@
 var middlewareObj = {};
-var Spots = require("./models/spot")
+var Spots = require("../models/spot")
 
 
 middlewareObj.isLoggedIn = function(req, res, next){
   if(req.isAuthenticated()){
     return next();
+  } else{
+  res.redirect("/");
   }
-  res.redirect("/login");
 };
-
+//ME NEXT
+//=============================
 middlewareObj.checkOwnership = function(req, res, next){
   if(req.isAuthenticated()){
     Spots.findById(req.params.id, function(err, spot){
       if(err){
         res.redirect("back");
       } else {
-        if 
+        if (spot.author.id.equal(req.user._id)){
+          next();
+        } else {
+          res.redirect("/");
+        }
+
       }
-    })
+    });
+  } else {
+    res.redirect("/");
   }
 }
 

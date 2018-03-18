@@ -39,10 +39,10 @@ function initMap() {
         // adding listeners to each marker for launch and info window when clicked
         google.maps.event.addListener(markers, "click", (function(markers, i) {
             return function() {
-                content = contentAdd(spot[i]);
-                infowindow.setContent(content);
-                infowindow.open(map, markers);
-                
+                // content = contentAdd(spot[i]);
+                // infowindow.setContent(content);
+                // infowindow.open(map, markers);
+                contentAdd(spot[i]);
             }
         })(markers, i));
     }
@@ -53,10 +53,33 @@ function initMap() {
 //
 
 function contentAdd(spot){
-    return ('<div class="infoContainer text-center">'+
-                    '<div class="interior">' +
-                   '<h2>'+ spot.name + '</h2>' +
-                    '<img src=' + spot.img + '>' +  
-                    '</div>' + 
-            '</div>')
+//   var iwContent = document.createElement("div");
+//   $(iwContent).append($(".lol").removeClass("hidden"));
+    var spotModal = 
+        '<div class="spotModal">'+
+            '<div class="spotModalContent">' +
+            '<span class="close">&times;</span>' +
+                '<h2 class="modalText">' + spot.name + '</h2>' +
+                '<img class="modalImg" src="'+spot.img+'">' +
+                '<div class="modalOverlay">' +
+                '<h2 class="text-center hoverText">'+ spot.name + '</h2>' +
+                '</div>'+
+                
+
+            '</div>'+
+        '</div>';    
+    $("body").prepend(spotModal);
+    var closeSpot = document.getElementsByClassName("close")[0];
+    var modalSpot = document.getElementsByClassName("spotModal")[0];
+    
+    window.onclick = function(e) {
+        if (e.target == modalSpot ){
+            $(".spotModal").remove();
+        }
+    }
+
+    closeSpot.onclick = function(){
+        $(".spotModal").remove();
+    }
 }
+

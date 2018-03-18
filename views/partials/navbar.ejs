@@ -7,7 +7,7 @@
 
 </nav> -->
 <header>
-    <nav class="navbar navBar navbar-expand-lg">
+    <nav class="navbar navBar fixed-top navbar-expand-lg">
       <a class="navbar-brand" href="/">Sesh</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
@@ -37,6 +37,7 @@
        </div>
      </div>
     </nav>
+  </header>
           <!-- Login Modal -->
           <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -56,13 +57,13 @@
 
 
           <!-- Sign Up Modal -->
-          <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal fade" id="signUp" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLongTitle">Log In</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span >&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
@@ -71,20 +72,24 @@
               </div>
             </div>
           </div>
-          <!-- Sign Up Modal -->
-          <div class="modal fade" id="newSpot" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <!-- Mew Spot Modal -->
+          <div class="modal fade" id="newSpot" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLongTitle">Add a new Spot</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span >&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
-                    <% include newSpot %>
+                    <% if(!currentUser) { %>
+                    <% include loginForm %>
+                    <% } else { %>
+                      <% include newSpot %>
+                      <% } %>
                 </div>
               </div>
             </div>
           </div>
-  </header>
+  

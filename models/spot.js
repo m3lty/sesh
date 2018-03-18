@@ -7,9 +7,11 @@ var SpotSchema = new mongoose.Schema({
     lng: String,
     img: String,
     author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-    },
+        id: {
+          type: mongoose.Schema.Types.ObjectId,
+        },
+        username: String,
+      },
 },{usePushEach: true})
 
 module.exports = mongoose.model("Spot", SpotSchema);

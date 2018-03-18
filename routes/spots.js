@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-
+var middleware = require("../middleware/index");
 var mongoose = require("mongoose");
 var multer = require("multer");
 var path = require("path");
@@ -23,7 +23,7 @@ router.get("/newspot", function(req, res){
     res.render("newspot", {stateList:stateList});
 });
 
-router.post("/", upload.single("spotImg"), function(req, res){
+router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, res){
     var newSpot = new Spots({
         name: req.body.spotName,
         lat: req.body.lat,
