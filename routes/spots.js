@@ -9,7 +9,7 @@ var states = fs.readFileSync("states.txt").toString();
 var stateList = states.split("\r\n");
 var Spots = require("../models/spot");
 
-
+//Image upload
 var upload = multer({storage: multer.diskStorage({
     destination: function(req, file, callback){
       callback(null, "public/img/spots");
@@ -29,7 +29,10 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
         lat: req.body.lat,
         lng: req.body.long,
         img: req.file.path.slice(6),
-        state: req.body.state
+        address: {
+            addr1:req.body.addr1,
+        } 
+
     });
 
     Spots.create(newSpot, function(err, newSpot){

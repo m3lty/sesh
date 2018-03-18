@@ -2,14 +2,22 @@
     <div class="form-group">
         <label for="spotName">Spot Name</label>
         <input type="text" name="spotName" id="spotName" class="form-control">
-        <label for="lat">Lattitude</label>
-        <input type="text" name="lat" aria-describedby="locHelp" id="lat" class="form-control">
-        <label for="long">Longitude</label>
-        <input type="text" name="long" id="long" class="form-control">
-        <small id="locHelp" class="form-text text-muted">(Closest physical address to the entrance, try Google Maps!)</small>
-        <label for="state">State:</label>
 
-        <input type="file" name="spotImg">
+        <!-- <label for="lat">Lattitude</label>
+        <input type="text" name="lat" aria-describedby="locHelp" id="lat" class="form-control">
+        <label for="long">Longitude</label> -->
+        <!-- <input type="text" name="long" id="long" class="form-control"> -->
+        <label for="addLine1">Address</label>
+        <input type="text" name="addr1"aria-describedby="locHelp" id="addLine1" class="form-control">
+        <label for="city">City</label>
+        <input type="text" name="city" id="city" class="form-control">
+        <label for="zip">Zip Code </label>
+        <input type="text" name="zip" id="zip" class="col-2 form-control">
+        <label for="spotImg">Upload a photo</label>
+        <input type="file" id="spotImg" class="form-control" name="spotImg">
+        <small id="locHelp" class="form-text text-muted">(Closest physical address to the entrance, try Google Maps!)</small>
+
+
         <button name="button" class="btn btn-primary">Submit</button>
     </div>
 </form>

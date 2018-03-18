@@ -1,7 +1,9 @@
 var spot = {};
 var markers = [{}];
-var latLng, content
-
+var content;
+var latLng;
+var geoCoder;
+var codedMarker = [];
 //Passes Spot Mongoose object to play JS
 function passSpot(passedSpot) {
     spot = passedSpot;
@@ -12,7 +14,7 @@ function passSpot(passedSpot) {
 //Intializes Google Map
 function initMap() {
     var paCenter = {lat:40.925999, lng: -77.594152} //Initial location for map placement
-
+    geoCoder = new google.maps.Geocoder(); 
     // Create a map object and specify the DOM element for display.
     var map = new google.maps.Map(document.getElementById('map'), {
       center: paCenter,
@@ -28,24 +30,48 @@ function initMap() {
         jQuery('.gm-style-iw').prev('div').remove();
     });
 
+    //Geocoded User Readable address and places marker
+    function geoCodeAddress(spot) {
+        var address = spot.address.addr1
+        console.log("Geocode called");
+        console.log(address + "??");
+        var loc = [];
+        var returner;
+        geoCoder.geocode({'address': address}, function(results, status){
+            if (status == 'OK'){
+                markers = new google.maps.Marker({
+                    position: results[0].geometry.location,
+                    map: map
+                }) ; 
+                google.maps.event.addListener(markers, "click", (function(markers, i) {
+                    return function() {
+                        // content = contentAdd(spot[i]);
+                        // infowindow.setContent(content);
+                        // infowindow.open(map, markers);
+                        console.log("Clicked?");
+                        contentAdd(spot);
+                    }
+                })(markers, i));   
+            
+            } else {
+                console.log("Geocode fucked up! Sorry!");
+            }
+        });
+    
+    }
+
+    
+
     
     for(var i = 0; i < spot.length; i++ ){
-        latLng = {lat: parseFloat(spot[i].lat), lng: parseFloat(spot[i].lng)};
+        geoCodeAddress(spot[i]);
         //Placing Markers for each Spot in database
-        markers = new google.maps.Marker({
-            position: latLng,
-            map: map
-        });          
+      
         // adding listeners to each marker for launch and info window when clicked
-        google.maps.event.addListener(markers, "click", (function(markers, i) {
-            return function() {
-                // content = contentAdd(spot[i]);
-                // infowindow.setContent(content);
-                // infowindow.open(map, markers);
-                contentAdd(spot[i]);
-            }
-        })(markers, i));
+
     }
+
+    
 }
 //===================================
 //
