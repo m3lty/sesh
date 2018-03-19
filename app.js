@@ -9,6 +9,7 @@ const localStrategy = require("passport-local");
 const indexRoute = require("./routes/index");
 const spotRoute = require("./routes/spots");
 const userRoute = require("./routes/users");
+const methodOverride = require("method-override");
 
 var User = require("./models/user");
 var Spots = require("./models/spot");
@@ -39,7 +40,7 @@ app.use(function(req, res, next){
   next();
 });
 //===========================================
-
+app.use(methodOverride("_method"));
 
 //Connecting route folders
 app.use("/", indexRoute);

@@ -1,18 +1,29 @@
 <% include ../partials/header %>
+<% include ../partials/navbar %>
 
-
-<div class="container">
+<div class="container belowNav">
     <div class="row">
         <div class="col">
             <h1><%= spot.name %></h1>
             <small><%= spot.geo %></small>
         </div>
         <div class="col">
-            <img src="<%=spot.mainImg%>" alt="">
+            <img class="smallImg" src="<%=spot.mainImg%>" alt="">
             <p> <%= spot.desc %></p>
         </div>
         <div class="col">
             <div id="singleMap"></div>
+        </div>
+        <div class="col-12">
+            <% if (currentUser && spot.author.id.equals(currentUser._id)){ %>
+                <form action="/spots/<%=spot._id%>/edit" method="POST">
+                    <a href="/spots/<%=spot._id %>/edit" class="btn btn-warning">Edit me</a>
+                </form>
+                <form action="/spots/<%=spot._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+                
+                <% } %>
         </div>
     </div>
     

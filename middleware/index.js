@@ -13,12 +13,15 @@ middlewareObj.isLoggedIn = function(req, res, next){
 //ME NEXT
 //=============================
 middlewareObj.checkOwnership = function(req, res, next){
+  console.log("Checking ownership");
   if(req.isAuthenticated()){
+    console.log("Is authed");
     Spots.findById(req.params.id, function(err, spot){
       if(err){
+        console.log(err);
         res.redirect("back");
       } else {
-        if (spot.author.id.equal(req.user._id)){
+        if (spot.author.id.equals(req.user._id)){
           next();
         } else {
           res.redirect("/");
@@ -27,6 +30,7 @@ middlewareObj.checkOwnership = function(req, res, next){
       }
     });
   } else {
+    console.log("super non auth");
     res.redirect("/");
   }
 }

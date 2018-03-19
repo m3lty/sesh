@@ -9,7 +9,13 @@ body, html{
     height: 500%;
     width: 400px;
 }
-
+.smallImg{
+    width: 50px;
+    height: 50px;
+}
+.belowNav {
+    margin-top: 100px;
+}
 .infoContainer{
     margin: 0, auto;
 }

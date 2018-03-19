@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var middleware = require("../middleware/index");
+var middleware = require("../middleware");
 var mongoose = require("mongoose");
 var multer = require("multer");
 var path = require("path");
@@ -38,8 +38,10 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
             geo: req.body.addr1 + " " + 
                 req.body.city + " PA " + req.body.zip,     
         },
-        author: req.user._id, 
-        
+        author: {
+            id: req.user._id, 
+            username:req.user.username
+        }
     });
     console.log(newSpot.address.geo);
 
@@ -79,7 +81,39 @@ router.get("/bystate/:id", function(req, res){
         }
     });
 });
+//==================
+//DELETE SPOT ROUTE
+//==================
+router.delete("/:id", middleware.checkOwnership, function(req, res){
+    Spots.findByIdAndRemove(req.params.id, function(err){
+      if(err){
+        console.log(err);
+        res.redirect("/");
+      } else {
+        console.log("Something was deleted.");
+        res.redirect("/");
+      }
+    })
+  });
+//EDIT SPOT
+router.get("/:id/edit", middleware.checkOwnership, function(req, res){
+    Spots.findById(req.params.id, function(err, spot){
+    res.render("spots/edit", {spot:spot});
+  });
+});
+//UPDATE SPOT
+router.put("/:id",middleware.checkOwnership, function(req, res){
+  //find and update convention and redir
+  Spots.findByIdAndUpdate(req.params.id, req.body.spot, function(err, updatedSpot){
+    if(err){
+      res.redirect("/");
+    } else {
+        console.log(req.body.convention);
+        res.redirect("/spots/" + req.params.id);
 
+    }
+  });
+});
 
 
 module.exports = router;
