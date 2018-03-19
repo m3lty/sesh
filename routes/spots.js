@@ -22,13 +22,14 @@ var upload = multer({storage: multer.diskStorage({
 router.get("/newspot", function(req, res){
     res.render("newspot", {stateList:stateList});
 });
-
+// NEW SPOT POST
+//================================
 router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, res){
     var newSpot = new Spots({
         name: req.body.spotName,
         lat: req.body.lat,
         lng: req.body.long,
-        img: req.file.path.slice(6),
+        mainImg: req.file.path.slice(6),
         address: {
             addr1:req.body.addr1,
             city: req.body.city,
@@ -36,7 +37,8 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
             state: "PA",
             geo: req.body.addr1 + " " + 
                 req.body.city + " PA " + req.body.zip,     
-        } 
+        },
+        author: req.user._id, 
         
     });
     console.log(newSpot.address.geo);

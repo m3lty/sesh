@@ -1,14 +1,34 @@
 <% include ../partials/header %>
-<h1><%=spot.name%></h1>
-<h2><%=spot.lat %></h2>
-<div id="map"></div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1><%= spot.name %></h1>
+            <small><%= spot.geo %></small>
+        </div>
+        <div class="col">
+            <img src="<%=spot.mainImg%>" alt="">
+            <p> <%= spot.desc %></p>
+        </div>
+        <div class="col">
+            <div id="singleMap"></div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
 
 <script>
     var newSpot = <%- JSON.stringify(spot) %>;
     passSpot(newSpot);
 </script>
 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaJ5R-GLdIW9KPG1fQWm2LyjQC77x0Dk4&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaJ5R-GLdIW9KPG1fQWm2LyjQC77x0Dk4&callback=initSmallMap">
 </script>
 
 <% include ../partials/footer %>

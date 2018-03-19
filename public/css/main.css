@@ -5,6 +5,10 @@ body, html{
 #map{
     height: 100%;
 }
+#singleMap{
+    height: 500%;
+    width: 400px;
+}
 
 .infoContainer{
     margin: 0, auto;
