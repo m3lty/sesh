@@ -25,8 +25,7 @@ router.get("/", function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render("home", {allSpots:allSpots});
-
+            res.render("home", {allSpots:allSpots});         
         }
 
     })
@@ -73,7 +72,7 @@ router.get("/register", function(req,res){
   });
   
   router.post("/login", userToLowerCase, passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "back",
     failureRedirect: "back"
   }), function(req, res){
   

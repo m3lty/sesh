@@ -1,13 +1,13 @@
 var middlewareObj = {};
 var Spots = require("../models/spot")
 
-
 middlewareObj.isLoggedIn = function(req, res, next){
   if(req.isAuthenticated()){
     return next();
   } else{
   console.log("Unregistered user attempted to do something.");
-  res.redirect("/");
+    res.redirect("/");
+  
   }
 };
 //ME NEXT

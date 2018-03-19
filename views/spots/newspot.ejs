@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+
+<div class="container belowNav">
+    <div class="row">
+        <div class=col>
+                <form action="/spots" enctype="multipart/form-data" method="POST">
+                    <div class="form-group">
+                        <label for="spotName">Spot Name</label>
+                        <input type="text" name="spotName" id="spotName" class="form-control">
+                        <label for="addLine1">Address</label>
+                        <input required type="text" name="addr1"aria-describedby="locHelp" id="addLine1" class="form-control">
+                        <label for="city">City</label>
+                        <input required type="text" name="city" id="city" class="form-control">
+                        <label for="zip">Zip Code </label>
+                        <input required type="text" name="zip" id="zip" class="col-2 form-control">
+                        <label for="spotImg">Upload a photo</label>
+                        <input required type="file" id="spotImg" class="form-control" name="spotImg">
+                        <small id="locHelp" class="form-text text-muted">(Closest physical address to the entrance, try Google Maps!)</small>
+                
+                
+                        <button name="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            <a href="/"><p>Back to Index</p></a>
+        </div>
+    </div>
+</div>
+
+
+
+<% include ../partials/footer %>

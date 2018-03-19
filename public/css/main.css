@@ -137,7 +137,9 @@ body, html{
     cursor: pointer;
 }
 
-
+.errorSpan{
+    color:red;
+}
 
 .hidden {
     display:none;

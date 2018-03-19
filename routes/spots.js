@@ -19,8 +19,8 @@ var upload = multer({storage: multer.diskStorage({
     }})
   });
 //New Spot logic
-router.get("/newspot", function(req, res){
-    res.render("newspot", {stateList:stateList});
+router.get("/newspot",middleware.isLoggedIn, function(req, res){
+    res.render("spots/newspot", {stateList:stateList});
 });
 // NEW SPOT POST
 //================================
