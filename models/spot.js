@@ -3,19 +3,21 @@ var SpotSchema = new mongoose.Schema({
     name:String,
     //What is this for?
     location:String,
-    state:{
-      type: String,
-      default: "Pennsylvania"
-    },
+
     // Soon to be depreciated?
-    lat: String,
-    lng: String,
+    // lat: String,
+    // lng: String,
     //===========
     img: String,
     address: {
       addr1: String,
       city: String,
       zip: String,
+      state:{
+        type: String,
+        default: "Pennsylvania"
+      },
+      geo: String,
     },
     author: {
         id: {

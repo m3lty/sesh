@@ -31,9 +31,15 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
         img: req.file.path.slice(6),
         address: {
             addr1:req.body.addr1,
+            city: req.body.city,
+            zip: req.body.zip,
+            state: "PA",
+            geo: req.body.addr1 + " " + 
+                req.body.city + " PA " + req.body.zip,     
         } 
-
+        
     });
+    console.log(newSpot.address.geo);
 
     Spots.create(newSpot, function(err, newSpot){
         if (err){
