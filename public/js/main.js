@@ -16,7 +16,7 @@ function passSpot(passedSpot) {
 
 //Intializes Full Page Google Map
 function initMap() {
-    var minZoom = 5;
+    var minZoom = 8;
     var paCenter = {lat:40.925999, lng: -77.594152} //Initial location for map placement
     geoCoder = new google.maps.Geocoder(); 
     // Create a map object and specify the DOM element for display.
@@ -119,6 +119,7 @@ function initSmallMap(){
 function contentAdd(spot){
 //   var iwContent = document.createElement("div");
 //   $(iwContent).append($(".lol").removeClass("hidden"));
+    var modalRating = spot.ratings.avg;
     var spotModal = 
         '<div class="spotModal">'+
             '<div class="spotModalContent">' +
@@ -127,12 +128,16 @@ function contentAdd(spot){
                 '<img class="modalImg" src="'+spot.mainImg+'">' +
                 '<div class="modalOverlay">' +
                 '<h2 class="text-center hoverText"><a href="spots/' + spot._id + '">' + spot.name + '</a></h2>' +
+                '<div class="starRating"></div>' +
                 '</div>'+
-                
 
             '</div>'+
         '</div>';    
     $("body").prepend(spotModal);
+
+    for (var i = 0 ; i < Math.floor(modalRating); i++){
+        $(".starRating").append("*");        
+    }
     var closeSpot = document.getElementsByClassName("close")[0];
     var modalSpot = document.getElementsByClassName("spotModal")[0];
     

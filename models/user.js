@@ -21,6 +21,13 @@ var UserSchema = new mongoose.Schema({
     type:String,
     default:"/img/placeholder-avatar.png"
   },
+  rated:[
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Spots"
+    },
+  ],
+
 
 },{usePushEach:true});
 

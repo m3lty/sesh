@@ -1,16 +1,19 @@
 <% include ../partials/header %>
-<div class="container">
+<% include ../partials/navbar %>
+<div class="container belowNav">
   <h1 class="text-center">Edit <%= spot.name %></h1>
   <div class="row">
-    <form action="/spots/<%= spot._id%>?_method=PUT" method="post">
+    <div class="col">
+      <img src="<%= spot.mainImg %>" class="smallImg" alt="Current Spot Image">
+    </div>
+    <form action="/spots/<%= spot._id%>?_method=PUT"enctype="multipart/form-data" method="post">
       <div class="form-group">
-        <input class="form-control" type="text" name="spot[name]" value="<%= spot.name %>">
+        <label for="name">Spot Name</label>
+        <input class="form-control" type="text" name="spot[name]" id="name" value="<%= spot.name %>">
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="spot[desc]" value="<%= spot.desc %>">
-      </div>
-      <div class="form-group">
-        <input class="form-control" type="text" name="spot[image]" value="<%= spot.image %>">
+        <label for="desc">Description</label>
+        <input class="form-control" type="text" name="spot[desc]" id="desc" value="<%= spot.desc %>">
       </div>
       <div class="form-group">
         <button class="btn btn-lg btn-primary btn-block">Submit</button>

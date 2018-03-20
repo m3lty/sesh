@@ -27,8 +27,25 @@ var SpotSchema = new mongoose.Schema({
         },
         username: String,
       },
-    rating: Number,
+    rating: {
+      type: Number,
+      default:0,
+    },
     desc: String,
+    ratings:{
+      total:{
+        type: Number,
+        default: 0
+      },
+      votes:{
+        type:Number,
+        default:0
+      },
+      avg:{
+        type: Number,
+        default: 0
+      }
+    },
     
 
 },{usePushEach: true})

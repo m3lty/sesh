@@ -24,6 +24,18 @@
                 </form>
                 
                 <% } %>
+            <p>Rating: <%=spot.ratings.avg %> stars.</p>
+            <p><%=spot.ratings.votes %> votes</p>
+            <% if (currentUser && !currentUser.rated.toString().includes(spot._id.toString())){ %>
+                <form action="/spots/<%=spot._id %>/rate" method="POST">
+                    <select name="rating">
+                        <% for(var i = 0; i <= 5; i++){ %>
+                            <option value="<%= i %>"><%= i %></option>
+                        <% } %>
+                    </select>
+                    <button class="btn btn-sm">Rate!</button>
+                </form>
+           <% } %>
         </div>
     </div>
     

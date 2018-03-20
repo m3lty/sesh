@@ -5,9 +5,8 @@ var mongoose = require("mongoose");
 var multer = require("multer");
 var path = require("path");
 var fs = require("fs");
-var states = fs.readFileSync("states.txt").toString();
-var stateList = states.split("\r\n");
 var Spots = require("../models/spot");
+var Users = require("../models/user");
 
 //Image upload
 var upload = multer({storage: multer.diskStorage({
@@ -20,7 +19,7 @@ var upload = multer({storage: multer.diskStorage({
   });
 //New Spot logic
 router.get("/newspot",middleware.isLoggedIn, function(req, res){
-    res.render("spots/newspot", {stateList:stateList});
+    res.render("spots/newspot");
 });
 // NEW SPOT POST
 //================================
@@ -70,17 +69,6 @@ router.get("/:id", function(req, res){
     });
 });
 
-
-//Displays a page containing all Spots for a given state
-router.get("/bystate/:id", function(req, res){
-    Spots.find({'state':req.params.id}, function(err,localSpot){
-        if(err){
-            console.log(err);
-        }else {
-            res.render("bystate", {state:req.params.id, localSpot:localSpot});
-        }
-    });
-});
 //==================
 //DELETE SPOT ROUTE
 //==================
@@ -95,6 +83,8 @@ router.delete("/:id", middleware.checkOwnership, function(req, res){
       }
     })
   });
+//================================================================
+
 //EDIT SPOT
 router.get("/:id/edit", middleware.checkOwnership, function(req, res){
     Spots.findById(req.params.id, function(err, spot){
@@ -114,6 +104,47 @@ router.put("/:id",middleware.checkOwnership, function(req, res){
     }
   });
 });
+
+//===================
+// RATING SPOT
+//===================
+router.post("/:id/rate", middleware.isLoggedIn, function(req, res){
+    Users.findById(req.user._id, function(err, user){
+        if(err){
+            console.log("Rate error" + err);
+        } else {
+            
+            // user.rated.push(req.params.id);
+            user.save();
+            Spots.findById(req.params.id, function(err, spot){
+                if (err){
+                    console.log(err);
+                } else {
+                    var totalVotes = parseInt(spot.ratings.votes) + 1;
+                    var totalNum =  parseInt(spot.ratings.total) + parseInt(req.body.rating);
+                    var avg = totalNum / totalVotes ;  
+                    var newRating = {
+                            ratings:{votes: totalVotes,
+                            total: totalNum,
+                            avg: avg.toFixed(1)
+                        }
+                    } ;
+
+                    Spots.findByIdAndUpdate(spot, newRating, function(err, updatedRating){
+                        if(err){
+                            console.log("Slipped on the update." + err);
+                        } else {
+                            console.log(spot.ratings.avg + "stars");
+                            spot.save();
+                            res.redirect("back");
+                        }
+                    })
+
+                }
+            })
+        }
+    })
+})
 
 
 module.exports = router;
