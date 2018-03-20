@@ -10,12 +10,10 @@ middlewareObj.isLoggedIn = function(req, res, next){
   
   }
 };
-//ME NEXT
+//Checking Ownership of SPOT
 //=============================
 middlewareObj.checkOwnership = function(req, res, next){
-  console.log("Checking ownership");
   if(req.isAuthenticated()){
-    console.log("Is authed");
     Spots.findById(req.params.id, function(err, spot){
       if(err){
         console.log(err);
@@ -30,43 +28,7 @@ middlewareObj.checkOwnership = function(req, res, next){
       }
     });
   } else {
-    console.log("super non auth");
     res.redirect("/");
   }
 }
-
-// middlewareObj.checkConOwnership = function(req, res, next){
-//   if (req.isAuthenticated()){
-//     Conventions.findById(req.params.id, function(err, convention){
-//       if(err){
-//         res.redirect("back");
-//       } else {
-//             if (convention.author.id.equals(req.user._id)){
-//               next();
-//             } else {
-//               res.redirect("back");
-//             }
-//       }
-//     });
-
-//   } else {
-//     res.redirect("back");
-//   }
-// };
-
-// middlewareObj.checkCosplayOwnership = function(req,res,next){
-//   if(req.isAuthenticated()){
-//     Cosplays.findById(req.params.id, function(err, cosplay){
-//       if(err){
-//         res.redirect("back");
-//       } else {
-//         if (cosplay.author.id.equals(req.user._id)){
-//           next();
-//         } else {
-//           res.redirect("back");
-//         }
-//       }
-//     });
-//   }
-// };
 module.exports = middlewareObj;

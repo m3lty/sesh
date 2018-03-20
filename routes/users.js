@@ -4,7 +4,7 @@ var Users = require("../models/user");
 var multer = require("multer");
 var path = require("path");
 var fs = require("fs");
-var tools = require("../public/js/index.js");
+
 var defaultAvatar = "/public/img/placeholder-avatar.jpeg";
 var upload = multer({storage: multer.diskStorage({
   destination: function(req, file, callback){

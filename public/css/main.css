@@ -1,7 +1,7 @@
 body, html{
     height: 100%;
 }
-
+/* MAP CANVAS PROPERTIES */
 #map{
     height: 100%;
 }
@@ -9,6 +9,8 @@ body, html{
     height: 500%;
     width: 400px;
 }
+
+
 .smallImg{
     width: 50px;
     height: 50px;
@@ -20,15 +22,12 @@ body, html{
     margin: 0, auto;
 }
 /* NAV BAR */
-.navBar{
-    position: absolute;
-    display: inline-flex;
-    z-index: 3;
+.navbar-light{
     width: 100%;
     background-color: #058C42;
     
 }
-.navBar a {
+.navbar-light a {
     color: #A0EADE;
 
 
@@ -93,12 +92,17 @@ body, html{
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #008CBA;
+    background-color: #442220;
     overflow: hidden;
     width: 100%;
     height: 0;
     transition: .5s ease;
   }
+
+.modalOverlay a {
+    color: white;
+    
+}
   
   .spotModalContent:hover .modalOverlay {
     height: 20%;

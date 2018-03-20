@@ -1,12 +1,6 @@
 var mongoose = require("mongoose");
 var SpotSchema = new mongoose.Schema({
     name:String,
-    //What is this for?
-
-    // Soon to be depreciated?
-    // lat: String,
-    // lng: String,
-    //===========
     //The initial uploaded Image - not tied directly to a user
     mainImg: String,
     //The Human Readable address initially entered by user
