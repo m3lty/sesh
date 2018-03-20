@@ -148,3 +148,22 @@ body, html{
 .hidden {
     display:none;
 }
+/* ==========================================
+
+            LANDING PAGE STYLES
+
+========================================== */
+#landingJumbo {
+    
+    background-image: url("../img/lib/theplace1.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 300px ;
+    overflow: hidden;
+}
+#landingJumbo h1 {
+    color: white;
+    float: right;
+}

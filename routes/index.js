@@ -31,7 +31,12 @@ router.get("/", function(req, res){
     })
 
 });
-
+// ==============================
+// LANDING PAGE ROUTE
+// ==============================
+router.get("/landing", function(req,res){
+  res.render("landing");
+})
 //==========================
 // NEW USER PAGE ROUTE
 //==========================
