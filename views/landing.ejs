@@ -1,20 +1,34 @@
 <% include partials/header %>
+<% include partials/navbar %>
+<div class="container-fluid">
 
-    <div class="container">
-        <div class="jumbotron jumbotron-flex" id="landingJumbo">
-            <div class="container">
-                <h1 class="display-4">SESH</h1>
+    <div class="row" id="landing1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="display-1">Sesh</h1>
+                    <p class="lead">Find new spots. Share your favorites. Explore Pennsylvania.</p>
+                </div>
+                <div class="col-lg-6" id="landingSignup">
+                    <p class="display-4">Sign Up</p>
+                    <% include partials/signUp %>
+                </div>
+            </div>
 
             </div>
         </div>
-        <div class="row">
-
-
+        <div class="row" id="landing2">
+            <div class="container">
+                <div class="row">
+                    <div class="col" id="landing2">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam cupiditate consectetur itaque nostrum laborum tempore in autem iusto sapiente porro rerum nemo magni unde earum cumque ex, harum, rem placeat.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
 
 
-    <script>$(document).ready(landingText());</script>
 <% include partials/footer %>

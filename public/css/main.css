@@ -1,6 +1,10 @@
 body, html{
     height: 100%;
 }
+body {
+    padding-top:30px;
+}
+
 /* MAP CANVAS PROPERTIES */
 #map{
     height: 100%;
@@ -16,18 +20,18 @@ body, html{
     height: 50px;
 }
 .belowNav {
-    margin-top: 100px;
+    margin-top: 70px;
 }
 .infoContainer{
     margin: 0, auto;
 }
 /* NAV BAR */
-.navbar-light{
+.navbar-dark{
     width: 100%;
-    background-color: #058C42;
+    background-color: #442220;
     
 }
-.navbar-light a {
+.navbar-dark a {
     color: #A0EADE;
 
 
@@ -148,22 +152,42 @@ body, html{
 .hidden {
     display:none;
 }
+
+.textStroke {
+    color: #fff;
+    text-shadow: #000 4px 1px 1px;
+
+}
+
 /* ==========================================
 
             LANDING PAGE STYLES
 
 ========================================== */
-#landingJumbo {
-    
-    background-image: url("../img/lib/theplace1.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 300px ;
-    overflow: hidden;
+#landing1{
+    background-color: #442220;
+    min-height: 500px;
+    color:white;
+
 }
-#landingJumbo h1 {
+#landingSignup{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius:30px;
+    padding: 1em;
+    color: black;
+    background-color: white;
+}
+#landing2{
+    min-height: 1000px;
+    background-color:#B0CA87;
     color: white;
-    float: right;
 }
+
+
+@media (min-width: 980px) {
+    body {
+      padding-top: 60px;
+      padding-bottom: 42px;
+    }
+  }
