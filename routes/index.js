@@ -25,17 +25,27 @@ router.get("/", function(req, res){
         if(err){
             console.log(err);
         } else {
+          if(!req.isAuthenticated()){
             res.render("home", {allSpots:allSpots});         
+          } else {
+            res.render("home", {allSpots:allSpots, user:req.User});
+          }
         }
 
-    })
-
+    });
 });
 // ==============================
 // LANDING PAGE ROUTE
 // ==============================
 router.get("/landing", function(req,res){
-  res.render("landing");
+  Spots.find({}, function(err, allSpots){
+    if(err){
+        console.log(err);
+    } else {
+        res.render("landing", {allSpots:allSpots});
+
+    }
+  });
 })
 //==========================
 // NEW USER PAGE ROUTE

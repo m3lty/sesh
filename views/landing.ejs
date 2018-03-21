@@ -5,14 +5,16 @@
     <div class="row" id="landing1">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col">
                     <h1 class="display-1">Sesh</h1>
-                    <p class="lead">Find new spots. Share your favorites. Explore Pennsylvania.</p>
+                    <p class="lead">When you want to just get away.</p>
                 </div>
-                <div class="col-lg-6" id="landingSignup">
+                <% if (!currentUser){ %>
+                <div class="col" id="landingSignup">
                     <p class="display-4">Sign Up</p>
                     <% include partials/signUp %>
                 </div>
+                <% } %>
             </div>
 
             </div>
@@ -20,9 +22,25 @@
         <div class="row" id="landing2">
             <div class="container">
                 <div class="row">
-                    <div class="col" id="landing2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam cupiditate consectetur itaque nostrum laborum tempore in autem iusto sapiente porro rerum nemo magni unde earum cumque ex, harum, rem placeat.
+                    <div class="col-12 text-center">
+                        <h2 class="display-2">Who we are</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum obcaecati nam facere sit qui tempore quasi, fugiat, consequatur possimus quam rerum numquam impedit, ipsum amet explicabo deserunt dolorem perferendis laborum!</p>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4 text-center">
+                        <img class="img-thumbnail" src="/img/lib/header.jpg" alt="">
+                        <p class='lead'>Wowie wowie lorem</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img class="img-thumbnail" src="/img/lib/theplace1.jpg" alt="">
+                        <p class="lead">This is another picture! Wow!</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img class="img-thumbnail" src="/img/spots/spotImg-1521403018437.jpg" alt="">
+                        <p class="lead">Last one! I promise!</p>
+                    </div>
+                   
                 </div>
             </div>
         </div>

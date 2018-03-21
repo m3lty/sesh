@@ -3,7 +3,6 @@
 // Contains all functions and methods associated with the Google Maps api elements.
 //
 // ===================================================================================
-var spot = {};
 var markers = [{}];
 var singleSpot = {};
 var content;
@@ -12,11 +11,7 @@ var geoCoder;
 var codedMarker = [];
 
 //Passes Spot Mongoose object to play JS
-function passSpot(passedSpot) {
-    spot = passedSpot;
-    console.log("Spot Object passed to JS");
-    console.log(spot);
-}
+
     //Geocoded User Readable address and places marker
 
 

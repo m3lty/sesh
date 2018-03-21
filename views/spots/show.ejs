@@ -4,30 +4,30 @@
 <div class="container belowNav">
     <div class="row">
         <div class="col">
-            <h1><%= spot.name %></h1>
-            <small><%= spot.geo %></small>
+            <h1><%= singleSpot.name %></h1>
+            <small><%= singleSpot.geo %></small>
         </div>
         <div class="col">
-            <img class="smallImg" src="<%=spot.mainImg%>" alt="">
-            <p> <%= spot.desc %></p>
+            <img class="smallImg" src="<%=singleSpot.mainImg%>" alt="">
+            <p> <%= singleSpot.desc %></p>
         </div>
         <div class="col">
             <div id="singleMap"></div>
         </div>
         <div class="col-12">
-            <% if (currentUser && spot.author.id.equals(currentUser._id)){ %>
-                <form action="/spots/<%=spot._id%>/edit" method="POST">
-                    <a href="/spots/<%=spot._id %>/edit" class="btn btn-warning">Edit me</a>
+            <% if (currentUser && singleSpot.author.id.equals(currentUser._id)){ %>
+                <form action="/spots/<%=singleSpot._id%>/edit" method="POST">
+                    <a href="/spots/<%=singleSpot._id %>/edit" class="btn btn-warning">Edit me</a>
                 </form>
-                <form action="/spots/<%=spot._id%>?_method=DELETE" method="POST">
+                <form action="/spots/<%=singleSpot._id%>?_method=DELETE" method="POST">
                     <button class="btn btn-danger">Delete</button>
                 </form>
                 
                 <% } %>
-            <p>Rating: <%=spot.ratings.avg %> stars.</p>
-            <p><%=spot.ratings.votes %> votes</p>
-            <% if (currentUser && !currentUser.rated.toString().includes(spot._id.toString())){ %>
-                <form action="/spots/<%=spot._id %>/rate" method="POST">
+            <p>Rating: <%=singleSpot.ratings.avg %> stars.</p>
+            <p><%=singleSpot.ratings.votes %> votes</p>
+            <% if (currentUser && !currentUser.rated.toString().includes(singleSpot._id.toString())){ %>
+                <form action="/spots/<%=singleSpot._id %>/rate" method="POST">
                     <select name="rating">
                         <% for(var i = 0; i <= 5; i++){ %>
                             <option value="<%= i %>"><%= i %></option>
@@ -42,14 +42,6 @@
 </div>
 
 
-
-
-
-
-<script>
-    var newSpot = <%- JSON.stringify(spot) %>;
-    passSpot(newSpot);
-</script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaJ5R-GLdIW9KPG1fQWm2LyjQC77x0Dk4&callback=initSmallMap">
 </script>

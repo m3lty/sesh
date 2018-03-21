@@ -1,8 +1,8 @@
 body, html{
     height: 100%;
 }
-body {
-    padding-top:30px;
+body{
+    padding-top: 40px;
 }
 
 /* MAP CANVAS PROPERTIES */
@@ -179,15 +179,19 @@ body {
     background-color: white;
 }
 #landing2{
+    padding-top: 5em;
     min-height: 1000px;
     background-color:#B0CA87;
     color: white;
 }
-
+.img-thumbnail {
+    min-height: 265px;
+}
 
 @media (min-width: 980px) {
     body {
       padding-top: 60px;
-      padding-bottom: 42px;
+
     }
   }
+

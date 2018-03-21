@@ -64,7 +64,7 @@ router.get("/:id", function(req, res){
         if (err){
             console.log(err);
         } else {
-            res.render("spots/show", {spot:foundSpot});
+            res.render("spots/show", {singleSpot:foundSpot});
         }
     });
 });
