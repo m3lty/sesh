@@ -158,6 +158,13 @@ body{
     text-shadow: #000 4px 1px 1px;
 
 }
+.btn-chill {
+    background-color: #809848;
+    
+}
+.btn-chill a {
+    text-decoration: none;
+}
 
 /* ==========================================
 
@@ -170,13 +177,16 @@ body{
     color:white;
 
 }
+
+
 #landingSignup{
     margin-top: 1em;
     margin-bottom: 1em;
+    border: 2px solid #2E0014;
     border-radius:30px;
     padding: 1em;
-    color: black;
-    background-color: white;
+    color: #2E0014;
+    background-color: #B5DEAD;
 }
 #landing2{
     padding-top: 5em;
