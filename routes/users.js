@@ -81,4 +81,62 @@ router.put("/:id", upload.single("avatar"), function(req, res){
 });
 })
 
+//==========================
+// NEW USER PAGE ROUTE
+//==========================
+router.get("/register", function(req,res){
+  if(!req.isAuthenticated()){
+    res.render("register");
+  } else {
+    res.redirect("/")
+  }
+
+});
+//===================
+// NEW USER POST
+//===================
+router.post("/register", function(req, res){
+
+  var newUser = new User({
+    username: req.body.username,
+    email: req.body.email,
+    birthday:req.body.birthday
+  });
+  User.register(newUser, req.body.password, function(err, user){
+    if(err){
+      console.log(err);
+      return res.redirect("back");
+    }
+    passport.authenticate("local")(req, res, function(){
+      console.log("User " + req.body.username + " registered at " + Date.now());
+      res.redirect("/");
+    });
+  });
+
+});
+
+//login logic
+router.get("/login", function(req,res){
+  res.render("login");
+});
+
+router.post("/login", userToLowerCase, passport.authenticate("local", {
+  successRedirect: "back",
+  failureRedirect: "back"
+}), function(req, res){
+
+  User.findOne({ username: username.toLowerCase() }).exec(callback)
+
+});
+
+//logout logic
+router.get("/logout", function(req, res){
+  req.logout();
+  res.redirect("/");
+});
+
+function userToLowerCase(req, res, next){
+  req.body.username = req.body.username.toLowerCase();
+  next();
+}
 module.exports = router;
