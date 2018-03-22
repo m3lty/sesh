@@ -1,9 +1,9 @@
 
-<% include partials/header %>
-<% include partials/navbar %>
+<% include ../partials/header %>
+<% include ../partials/navbar %>
 
 
-<form action="/register" method="POST">
+<form action="/register" enctype="multipart/form-data" method="POST">
     <div class="form-row">
       <div class="form-group col-md-6 col-12">
         <label for="email">Email Address</label>
@@ -20,10 +20,16 @@
         <input required class="form-control" type="password" id="password" name="password"> 
       </div>
     </div>
+    <div class="form-row">
+        <div class="form-group col-12 col-md-6">
+            <label for="uploadAvatar">Upload Avatar</label>
+            <input type="file" name="uploadAvatar" id="uploadAvatar">
+        </div>
+    </div>
       <button class="form-controlbtn btn-primary">Submit</button>
     </div>
   </div>
   </form>
 
 
-  <%include partials/footer %>
+  <% include ../partials/footer %>

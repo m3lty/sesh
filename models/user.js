@@ -10,9 +10,8 @@ var UserSchema = new mongoose.Schema({
     index: true
 
   },
-  usernameId: String,
+  usernameId: String,   //Do I use this?
   email: String,
-  birthday: Date,
   usertype: {type: Number, default: 0}, //Mod Rights
   created: {type: Date, default:Date.now},
 

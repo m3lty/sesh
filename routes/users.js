@@ -4,19 +4,21 @@ var Users = require("../models/user");
 var multer = require("multer");
 var path = require("path");
 var fs = require("fs");
+var passport = require("passport");
+var Spots = require("../models/spot");
+var middleware = require("../middleware/index");
+var upload = multer({storage: multer.diskStorage({
+    destination: function(req, file, callback){
+      callback(null, "public/img/usr");
+    },
+    filename: function(req, file, callback){
+      callback(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+    }})
+  });
 
 var defaultAvatar = "/public/img/placeholder-avatar.jpeg";
-var upload = multer({storage: multer.diskStorage({
-  destination: function(req, file, callback){
-    callback(null, "public/img/usr");
-  },
-  filename: function(req, file, callback){
-    callback(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
-  }})
-});
 
-
-//===============
+//==============
 // USER LIST ROUTE
 //===============
 router.get("/", function(req, res){
@@ -67,7 +69,7 @@ router.put("/:id", upload.single("avatar"), function(req, res){
       }
       user.avatar = req.file.path.slice(6);
     } else{ //User did not upload new avatar
-      user.avatar = user.avatar
+      user.avatar = user.avatar;
     }
     //Updating user information from form
     user.bio = req.body.update.bio;
@@ -81,62 +83,5 @@ router.put("/:id", upload.single("avatar"), function(req, res){
 });
 })
 
-//==========================
-// NEW USER PAGE ROUTE
-//==========================
-router.get("/register", function(req,res){
-  if(!req.isAuthenticated()){
-    res.render("register");
-  } else {
-    res.redirect("/")
-  }
 
-});
-//===================
-// NEW USER POST
-//===================
-router.post("/register", function(req, res){
-
-  var newUser = new User({
-    username: req.body.username,
-    email: req.body.email,
-    birthday:req.body.birthday
-  });
-  User.register(newUser, req.body.password, function(err, user){
-    if(err){
-      console.log(err);
-      return res.redirect("back");
-    }
-    passport.authenticate("local")(req, res, function(){
-      console.log("User " + req.body.username + " registered at " + Date.now());
-      res.redirect("/");
-    });
-  });
-
-});
-
-//login logic
-router.get("/login", function(req,res){
-  res.render("login");
-});
-
-router.post("/login", userToLowerCase, passport.authenticate("local", {
-  successRedirect: "back",
-  failureRedirect: "back"
-}), function(req, res){
-
-  User.findOne({ username: username.toLowerCase() }).exec(callback)
-
-});
-
-//logout logic
-router.get("/logout", function(req, res){
-  req.logout();
-  res.redirect("/");
-});
-
-function userToLowerCase(req, res, next){
-  req.body.username = req.body.username.toLowerCase();
-  next();
-}
 module.exports = router;
