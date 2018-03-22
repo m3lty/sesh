@@ -114,7 +114,7 @@ router.post("/:id/rate", middleware.isLoggedIn, function(req, res){
             console.log("Rate error" + err);
         } else {
             
-            // user.rated.push(req.params.id);
+            user.rated.push(req.params.id);
             user.save();
             Spots.findById(req.params.id, function(err, spot){
                 if (err){
