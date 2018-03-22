@@ -7,7 +7,7 @@
       <h1 class="text-center">Edit <%= user.name %></h1>
       <form action="/users/<%= user._id%>?_method=PUT" enctype="multipart/form-data" method="post">
         <div class="form-group">
-          <img src="<%= user.avatar %>" alt="User Avatar">
+          <img src="<%= user.avatar %>" alt="User Avatar" class="rounded avatar">
           <h4>Change Avatar</h4>
           <p class="small">(Your current avatar will be deleted)</p>
           <input type="file" name="avatar">
@@ -15,23 +15,6 @@
         <div class="form-group">
           <h4>Bio</h4>
           <textarea class="form-control" type="text" name="update[bio]"> <%=user.bio %> </textarea>
-        </div>
-        <h3>Social Media</h3>
-        <div class="form-group">
-          <h4>Twitter</h4>
-          <input class="form-control" type="text" name="update[twitter]" value="<%= user.socialmedia.twitter %>">
-        </div>
-        <div class="form-group">
-          <h4>Instagram</h4>
-          <input class="form-control" type="text" name="update[instagram]" value="<%= user.socialmedia.instagram%>">
-        </div>
-        <div class="form-group">
-          <h4>Tumblr</h4>
-          <input class="form-control" type="text" name="update[tumblr]" value="<%= user.socialmedia.tumblr %>">
-        </div>
-        <div class="form-group">
-          <h4>Facebook</h4>
-          <input class="form-control" type="text" name="update[facebook]" value="<%= user.socialmedia.facebook %>">
         </div>
         <div class="form-group">
           <button class="btn btn-lg btn-primary btn-block">Submit</button>

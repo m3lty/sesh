@@ -50,7 +50,7 @@ router.get("/:id", function(req, res){
 //================
 router.get("/:id/edit", function(req, res){
   Users.findById(req.params.id, function(err, user){
-    res.render("user/edit", {user: user});
+    res.render("users/edit", {user: user});
   });
 });
 
