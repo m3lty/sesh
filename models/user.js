@@ -14,7 +14,7 @@ var UserSchema = new mongoose.Schema({
   email: String,
   usertype: {type: Number, default: 0}, //Mod Rights
   created: {type: Date, default:Date.now},
-
+  bio: String,
   password: String,
   avatar: {
     type:String,

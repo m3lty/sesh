@@ -197,6 +197,16 @@ body{
 .img-thumbnail {
     min-height: 265px;
 }
+/* ===========================================
+
+        USER STYLES
+
+=========================================== */
+.avatar {
+    max-width: 100%;
+}
+
+
 
 @media (min-width: 980px) {
     body {

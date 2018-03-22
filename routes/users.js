@@ -41,9 +41,7 @@ router.get("/:id", function(req, res){
     if (err){
       console.log(err);
     } else {
-      foundUser.attending.sort(tools.upcomingSort);
-      foundUser.uploads.sort(tools.popularSort);
-      res.render("user/profile", {user: foundUser});
+      res.render("users/show", {user: foundUser});
     }
   });
 });
