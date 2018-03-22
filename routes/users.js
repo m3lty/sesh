@@ -50,20 +50,32 @@ router.get("/:id", function(req, res){
 //================
 router.get("/:id/edit", function(req, res){
   Users.findById(req.params.id, function(err, user){
+    if (err){
+      console.log(err);
+    } else {
     res.render("users/edit", {user: user});
+    }
   });
 });
 
 router.put("/:id", upload.single("avatar"), function(req, res){
   Users.findById(req.params.id, function(err, user){
-    var avatarPath = "public/"+ user.avatar;
+    // console.log("Found user: " + user.username);
+    console.log("public" + user.avatar);
+    var avatarPath = "public"+ user.avatar;
     if (err){
+      console.log("This is where it fucks up");
       console.log(err);
     } else {
+      console.log(user.avatar);
+      console.log("hmm");
     if(req.file){
+      console.log("Trying to delete User Avatar");
       if(user.avatar != defaultAvatar){
         //Deleting Current Avatar
-        fs.unlinkSync(avatarPath);
+        // fs.unlinkSync(avatarPath);
+
+        console.log("Deleted?");
       }
       user.avatar = req.file.path.slice(6);
     } else{ //User did not upload new avatar
@@ -71,10 +83,6 @@ router.put("/:id", upload.single("avatar"), function(req, res){
     }
     //Updating user information from form
     user.bio = req.body.update.bio;
-    user.socialmedia.twitter = req.body.update.twitter;
-    user.socialmedia.instagram = req.body.update.instagram;
-    user.socialmedia.tumblr = req.body.update.tumblr;
-    user.socialmedia.facebook = req.body.update.facebook;
     user.save();
     res.redirect("/");
   }

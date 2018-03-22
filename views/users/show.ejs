@@ -7,7 +7,7 @@
             <img src="<%=user.avatar%>" alt="User Avatar" class="float-left rounded avatar">
             <p><%=user.bio %></p>
             <% if (currentUser && user._id.equals(currentUser._id)){ %>
-                <a href="<%= currentUser._id %>/edit"><p>Edit your profile.</p></a>
+                <a href=" <%= currentUser._id %>/edit"><p>Edit your profile.</p></a>
 
             <% } %>
         </div>
