@@ -66,7 +66,8 @@ router.get("/register", function(req,res){
     var newUser = new User({
       username: req.body.username,
       email: req.body.email,
-      avatar: req.file.path.slice(6)
+      avatar: req.file.path.slice(6),
+      bio: req.body.bio
     });
     User.register(newUser, req.body.password, function(err, user){
       if(err){
