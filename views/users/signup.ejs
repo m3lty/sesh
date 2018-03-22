@@ -1,35 +1,38 @@
 
 <% include ../partials/header %>
 <% include ../partials/navbar %>
-
-
-<form action="/register" enctype="multipart/form-data" method="POST">
-    <div class="form-row">
-      <div class="form-group col-md-6 col-12">
-        <label for="email">Email Address</label>
-        <input required class="form-control" type="email" id="signUpEmail" name="email" placeholder="example@example.com">
-      </div>
-      <div class="form-group col-md-6 col-12">
-        <label for="signUpUsername">Username</label>
-        <input required class="form-control" type="text" id="username"  name="username" >
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6 col-sm-12 col-12">
-        <label for="signUpPassword">Password</label>
-        <input required class="form-control" type="password" id="password" name="password"> 
-      </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-12 col-md-6">
-            <label for="uploadAvatar">Upload Avatar</label>
-            <input type="file" name="uploadAvatar" id="uploadAvatar">
+<div class="container belowNav" >
+  <div class="row">
+    <div class="col">
+      <h2>Sign Up</h2>
+  <form action="/register" enctype="multipart/form-data" method="POST">
+      <div class="form-row">
+        <div class="form-group col-md-6 col-12">
+          <label for="email">Email Address</label>
+          <input required class="form-control" type="email" id="signUpEmail" name="email" placeholder="example@example.com">
         </div>
-    </div>
-      <button class="form-controlbtn btn-primary">Submit</button>
-    </div>
-  </div>
+        <div class="form-group col-md-6 col-12">
+          <label for="signUpUsername">Username</label>
+          <input required class="form-control" type="text" id="username"  name="username" >
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6 col-sm-12 col-12">
+          <label for="signUpPassword">Password</label>
+          <input required class="form-control" type="password" id="password" name="password"> 
+        </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group col-12 col-md-6">
+              <label for="uploadAvatar">Upload Avatar</label>
+              <input type="file" name="uploadAvatar" id="uploadAvatar">
+          </div>
+      </div>
+        <button class="form-controlbtn btn-primary">Submit</button>
+      
+    
   </form>
-
-
+</div>
+</div>
+</div>
   <% include ../partials/footer %>
