@@ -26,6 +26,10 @@ var UserSchema = new mongoose.Schema({
       ref: "Spots"
     },
   ],
+  checkedIn: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Spots"
+  }],
 
 
 },{usePushEach:true});

@@ -40,6 +40,10 @@ var SpotSchema = new mongoose.Schema({
         default: 0
       }
     },
+    checkedIn: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Users",
+    }]
     
 
 },{usePushEach: true})
