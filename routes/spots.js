@@ -144,7 +144,34 @@ router.post("/:id/rate", middleware.isLoggedIn, function(req, res){
             })
         }
     })
-})
+});
+
+//=================================
+//
+//      Check In
+//=================================
+router.post("/:id/checkin", middleware.isLoggedIn, function(req, res){
+    Spots.findById(req.params.id, function(err, spot){
+        if (err){
+            console.log(err);
+        } else {
+            //adding USER to SPOT
+            console.log(req.user.username);
+            spot.checkedIn.push(req.user._id);
+            spot.save();
+            Users.findById(req.user._id, function(err, user){
+                if (err){
+                    console.log(err);
+                } else {
+                    // adding SPOT to USER
+                    user.checkedIn.push(req.params.id);
+                    user.save();
+                }
+            });
+
+        }
+    })
+});
 
 
 module.exports = router;

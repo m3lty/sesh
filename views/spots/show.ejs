@@ -33,7 +33,7 @@
                             <option value="<%= i %>"><%= i %></option>
                         <% } %>
                     </select>
-                    <button class="btn btn-sm">Rate!</button>
+                    <button class="btn btn-sm" >Rate!</button>
                 </form>
            <% } %>
         </div>
@@ -42,8 +42,11 @@
     <div class="row">
         <div class="col">
             <% if (currentUser){ %>
-                <button class="btn btn-primary">Check in!</button>
-            <% } %>
+                <form action="/spots/<%=singleSpot._id %>/checkin" method="POST">
+                    <button class="btn btn-primary">Check in!</button>
+                </form>
+                
+            <% }  %>
         </div>
     </div>
     
