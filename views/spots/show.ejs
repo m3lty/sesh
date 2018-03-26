@@ -41,12 +41,19 @@
     </div>
     <div class="row">
         <div class="col">
-            <% if (currentUser){ %>
+            <% if (currentUser && !currentUser.checkedIn.toString().includes(singleSpot._id.toString())){ %>
                 <form action="/spots/<%=singleSpot._id %>/checkin" method="POST">
                     <button class="btn btn-primary">Check in!</button>
-                </form>
-                
-            <% }  %>
+                </form>  
+            <% } else { %>
+
+                <% if (currentUser && currentUser.checkedIn.toString().includes(singleSpot._id.toString())) { %>
+                    <form action="/spots/<%=singleSpot._id %>/uncheckin?_method=PUT" method= "POST">
+                        <p>You have already check in to <%= singleSpot.name %>.</p>
+                        <button class="btn btn-caution">Cancel Check in.</button>
+                    </form>
+                <% }}  %>
+
         </div>
     </div>
     

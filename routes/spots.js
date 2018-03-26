@@ -166,12 +166,31 @@ router.post("/:id/checkin", middleware.isLoggedIn, function(req, res){
                     // adding SPOT to USER
                     user.checkedIn.push(req.params.id);
                     user.save();
+                    
                 }
             });
 
         }
-    })
+        res.redirect("back");
+    });
 });
+
+
+router.put("/:id/uncheckin", middleware.isLoggedIn, function(req, res){
+    Users.findById(req.user._id, function(err, user){
+        if (err){
+            console.log(err);
+        } else {
+            user.checkedIn.remove(req.params.id);
+            user.save();
+            Spots.findById(req.params.id, function(err, spot){
+                spot.checkedIn.remove(req.user._id);
+                spot.save();
+            });
+        res.redirect("back");
+        }
+    })
+})
 
 
 module.exports = router;
