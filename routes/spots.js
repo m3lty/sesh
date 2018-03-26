@@ -60,7 +60,7 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
 
 //Display Page for Specific Spot
 router.get("/:id", function(req, res){
-    Spots.findById(req.params.id).exec(function(err, foundSpot){
+    Spots.findById(req.params.id).populate("checkedIn").exec(function(err, foundSpot){
         if (err){
             console.log(err);
         } else {

@@ -40,6 +40,17 @@
 
     </div>
     <div class="row">
+        <div class="col-12">
+            <h3>Users who have checked in:</h3>
+        </div>
+            <% singleSpot.checkedIn.forEach(function(user) { %>
+                <div class="col-2">
+                <p><%= user.username %></p>
+                </div>                                
+            <% }) %>
+    
+    </div>
+    <div class="row">
         <div class="col">
             <% if (currentUser && !currentUser.checkedIn.toString().includes(singleSpot._id.toString())){ %>
                 <form action="/spots/<%=singleSpot._id %>/checkin" method="POST">

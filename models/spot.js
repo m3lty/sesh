@@ -42,7 +42,7 @@ var SpotSchema = new mongoose.Schema({
     },
     checkedIn: [{
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Users",
+      ref: "User",
     }]
     
 
