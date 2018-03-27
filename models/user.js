@@ -30,6 +30,10 @@ var UserSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Spots"
   }],
+  comment: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"Comment",
+  }]
 
 
 },{usePushEach:true});
