@@ -5,9 +5,10 @@ var mongoose = require("mongoose");
 var multer = require("multer");
 var path = require("path");
 var fs = require("fs");
+
 var Spots = require("../models/spot");
 var Users = require("../models/user");
-
+var Comments = require("../models/comment");
 //Image upload
 var upload = multer({storage: multer.diskStorage({
     destination: function(req, file, callback){
@@ -190,7 +191,41 @@ router.put("/:id/uncheckin", middleware.isLoggedIn, function(req, res){
         res.redirect("back");
         }
     })
-})
+});
+
+
+// ===============================================================
+//
+//      Comment Logic
+//
+//
+//================================================================
+router.post("/:id/addcomment", middleware.isLoggedIn, function(req, res){
+    Spots.findById(req.user_id, function(err, user){
+        if(err){
+            console.log(err);
+        } else {
+            var newComment = new Comments({
+                content: req.body.comment,
+                author: req.user._id
+            });
+            Comments.create(newComment, function(err, newComment){
+                if(err){
+                    console.log(err);
+                }
+                Spots.findById(req.params.id, function(err, spot){
+                    if(err){
+                        console.log(err);
+                    }
+                    
+                    })
+                    res.redirect("back");
+                
+            });
+        }
+    });
+
+});
 
 
 module.exports = router;
