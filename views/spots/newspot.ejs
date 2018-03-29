@@ -13,26 +13,46 @@
                             </div>
                             <div class="col-12">
                                 <label for="addLine1">Address</label>
-                                <input required type="text" name="addr1"aria-describedby="locHelp" id="addLine1" class="form-control">
+                                <input required type="text" name="addr1" id="addLine1" class="form-control">
                             </div>
                             <div class="col-6">
                                 <label for="city">City</label>
-                                <input required type="text" name="city" id="city" class="form-control">
+                                <input required type="text" name="city" id="city" class="form-control" aria-describedby="locHelp">
+                                <small id="locHelp" class="form-text text-muted">Can't find a street address? <a href="#">Try Lattitude and Longitude!</a></small>
                             </div>
                             <div class="col-6">
                                 <label for="zip">Zip Code </label>
-                                <input required type="text" name="zip" id="zip" class="col-2 form-control">
-                                <p>Can't find an address? Try the Lattitude & Longitude!</p>
-                                <small id="locHelp" class="form-text text-muted">(Closest physical address to the entrance, try Google Maps!)</small>
+                                <input required type="text" name="zip" id="zip" class="col-2 form-control" >
+                                
                             </div>
                             <div class="col">
                                 <label for="spotImg">Upload a photo</label>
-                                <input required type="file" id="spotImg" class="form-control" name="spotImg">
+                                <input required type="file" id="spotImg" class="form-control" name="spotImg" aria-describedby="imgHelp">
+                                <small class="form-text text-muted" id="imgHelp">This is the default image shown in relation to your spot. Make it count!</small>
                             </div>  
-                            <div class="col-12 form-check">
-                                <input type="checkbox" class="form-check-input" id="petCheck">
-                                <label class="form-check-label" for="petCheck">Pet Friendly</label>
-
+                            <div class="col-4">
+                                <label for="overallRating">Overall Rating:</label>
+                                <select name="overallRating">
+                                    <% for(var i = 0; i <= 5; i++){ %>
+                                        <option id="overallRating" value="<%= i %>"><%= i %></option>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                    <label for="difficultyRating">Difficulty Rating:</label>
+                                    <select name="difficultyRating">
+                                        <% for(var i = 0; i <= 5; i++){ %>
+                                            <option id="difficultyRating" value="<%= i %>"><%= i %></option>
+                                        <% } %>
+                                    </select>
+                            </div>
+                            <div class="col-4">
+                                    <label for="privacyRating">Privacy Rating:</label>
+                                    <select name="privacyRating">
+                                        <% for(var i = 0; i <= 5; i++){ %>
+                                            <option id="privacyRating" value="<%= i %>"><%= i %></option>
+                                        <% } %>
+                                    </select>
                             </div>
                             <div class="col-12">
                                 <label for="desc">Description</label>

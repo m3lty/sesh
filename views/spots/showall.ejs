@@ -1,0 +1,9 @@
+<% include ../partials/header %>
+<div ng-controller="spotsController">
+    <div ng-repeat="x in spots">
+        <a href="/spots/{{x._id}}">{{x.name}}</a>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>
