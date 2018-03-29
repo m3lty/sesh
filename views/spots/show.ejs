@@ -50,6 +50,7 @@
             <% }) %>
     
     </div>
+    <!-- check in  -->
     <div class="row">
         <div class="col">
             <% if (currentUser && !currentUser.checkedIn.toString().includes(singleSpot._id.toString())){ %>
@@ -65,6 +66,17 @@
                     </form>
                 <% }}  %>
 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <% if (currentUser){ %>
+                <h3>Add a comment</h3>
+                <form action="/spots/<%=singleSpot._id %>/comment/add" method="POST">
+                    <textarea class="form-control" name="comment" id="comment" cols="30" rows="10"></textarea>
+                    <button class="btn btn-primary btn-sm form-control">Submit</button>
+                </form>
+           <% } %>
         </div>
     </div>
     
