@@ -21,3 +21,4 @@ var CommentSchema = new mongoose.Schema({
 }, {usePushEach:true});
 
 module.exports = mongoose.model("Comment", CommentSchema);
+//added a comment
