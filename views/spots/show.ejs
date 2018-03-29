@@ -24,8 +24,13 @@
                 </form>
                 
                 <% } %>
-            <p>Rating: <%=singleSpot.ratings.avg %> stars.</p>
-            <p><%=singleSpot.ratings.votes %> votes</p>
+            <p>Overall Rating: <%=singleSpot.ratings.overall.avg %> stars.</p>
+            <p><%=singleSpot.ratings.overall.votes %> votes</p>
+            <p>Difficulty Rating: <%=singleSpot.ratings.difficulty.avg %> stars.</p>
+            <p><%=singleSpot.ratings.difficulty.votes %> votes</p>
+            <p>Privacy Rating: <%=singleSpot.ratings.privacy.avg %> stars.</p>
+            <p><%=singleSpot.ratings.privacy.votes %> votes</p>
+
             <% if (currentUser && !currentUser.rated.toString().includes(singleSpot._id.toString())){ %>
                 <form action="/spots/<%=singleSpot._id %>/rate" method="POST">
                     <select name="rating">
