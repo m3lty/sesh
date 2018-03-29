@@ -26,8 +26,6 @@ router.get("/newspot",middleware.isLoggedIn, function(req, res){
 router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, res){
     var newSpot = new Spots({
         name: req.body.spotName,
-        lat: req.body.lat,
-        lng: req.body.long,
         mainImg: req.file.path.slice(6),
         address: {
             addr1:req.body.addr1,
@@ -36,6 +34,20 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
             state: "PA",
             geo: req.body.addr1 + " " + 
                 req.body.city + " PA " + req.body.zip,     
+        },
+        ratings:{
+            overall:{
+                total:req.body.overallRating,
+                avg: req.body.overallRating
+            },
+            difficulty:{
+                total: req.body.difficultyRating,
+                avg: req.body.difficultyRating
+            },
+            privacy:{
+                total: req.body.privacyRating,
+                avg: req.body.privacyRating
+            },
         },
         author: {
             id: req.user._id, 
@@ -81,7 +93,7 @@ router.delete("/:id", middleware.checkOwnership, function(req, res){
         console.log("Something was deleted.");
         res.redirect("/");
       }
-    })
+    });
   });
 //================================================================
 
@@ -113,13 +125,14 @@ router.post("/:id/rate", middleware.isLoggedIn, function(req, res){
         if(err){
             console.log("Rate error" + err);
         } else {
-            
+            //updating user model with Rated Spot's ID
             user.rated.push(req.params.id);
             user.save();
             Spots.findById(req.params.id, function(err, spot){
                 if (err){
                     console.log(err);
                 } else {
+                    //Doing the Math for averages of OverallRating
                     var totalVotes = parseInt(spot.ratings.votes) + 1;
                     var totalNum =  parseInt(spot.ratings.total) + parseInt(req.body.rating);
                     var avg = totalNum / totalVotes ;  
@@ -129,7 +142,7 @@ router.post("/:id/rate", middleware.isLoggedIn, function(req, res){
                             avg: avg.toFixed(1)
                         }
                     } ;
-
+                    //Updating Spot model with 
                     Spots.findByIdAndUpdate(spot, newRating, function(err, updatedRating){
                         if(err){
                             console.log("Slipped on the update." + err);
@@ -138,12 +151,12 @@ router.post("/:id/rate", middleware.isLoggedIn, function(req, res){
                             spot.save();
                             res.redirect("back");
                         }
-                    })
+                    });
 
                 }
-            })
+            });
         }
-    })
+    });
 });
 
 //=================================
@@ -189,8 +202,8 @@ router.put("/:id/uncheckin", middleware.isLoggedIn, function(req, res){
             });
         res.redirect("back");
         }
-    })
-})
+    });
+});
 
 
 module.exports = router;

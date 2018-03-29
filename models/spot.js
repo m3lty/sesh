@@ -15,31 +15,80 @@ var SpotSchema = new mongoose.Schema({
       //Concat'd user input for use with Geocoding
       geo: String,
     },
+
+    //Defines Author of Spot
     author: {
         id: {
           type: mongoose.Schema.Types.ObjectId,
         },
         username: String,
       },
-    rating: {
+
+
+    overallRating: {
       type: Number,
       default:0,
     },
-    desc: String,
-    ratings:{
-      total:{
-        type: Number,
-        default: 0
-      },
-      votes:{
-        type:Number,
-        default:0
-      },
-      avg:{
-        type: Number,
-        default: 0
-      }
+    privacyRating: {
+      type: Number,
+      default:0,
     },
+    difficultyRating: {
+      type: Number,
+      default:0,
+    },
+
+
+    desc: String,
+
+  
+    ratings:{
+      overall:{
+
+        total:{
+          type: Number,
+          default: 0
+        },
+        votes:{
+          type:Number,
+          default:1
+        },
+        avg:{
+          type: Number,
+          default: 0
+        }
+      },
+      difficulty:{
+        total:{
+          type: Number,
+          default: 0
+        },
+        votes:{
+          type:Number,
+          default:1
+        },
+        avg:{
+          type: Number,
+          default: 0
+        }
+      },
+      privacy:{
+        total:{
+          type: Number,
+          default: 0
+        },
+        votes:{
+          type:Number,
+          default:1
+        },
+        avg:{
+          type: Number,
+          default: 0
+        }
+      }
+
+    },
+
     checkedIn: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
