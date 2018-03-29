@@ -24,21 +24,6 @@ var SpotSchema = new mongoose.Schema({
         username: String,
       },
 
-
-    overallRating: {
-      type: Number,
-      default:0,
-    },
-    privacyRating: {
-      type: Number,
-      default:0,
-    },
-    difficultyRating: {
-      type: Number,
-      default:0,
-    },
-
-
     desc: String,
 
   
