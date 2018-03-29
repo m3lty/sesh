@@ -70,6 +70,16 @@
     </div>
     <div class="row">
         <div class="col-12">
+            <h3>Comments</h3>
+            <% singleSpot.comments.forEach(function(comment){ %>
+                <p><%=comment.content%></p>
+                <small>Posted by: <%=comment.author.username %> | <%=comment.posted %></small>
+
+            <% }) %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
             <% if (currentUser){ %>
                 <h3>Add a comment</h3>
                 <form action="/spots/<%=singleSpot._id %>/comment/add" method="POST">

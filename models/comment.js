@@ -1,8 +1,11 @@
 var mongoose = require("mongoose");
 var CommentSchema = new mongoose.Schema({
     author:{
+        id:{
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
+        },
+        username: String,
     },
 
     spot:{
@@ -12,7 +15,8 @@ var CommentSchema = new mongoose.Schema({
     posted:{
         type: Date,
         default: Date.now,
-    }
+    },
+    content: String,
 
 }, {usePushEach:true});
 

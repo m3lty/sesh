@@ -7,6 +7,7 @@ var path = require("path");
 var fs = require("fs");
 var Spots = require("../models/spot");
 var Users = require("../models/user");
+var Comments = require("../models/comment");
 
 //Image upload
 var upload = multer({storage: multer.diskStorage({
@@ -51,7 +52,7 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
         },
         author: {
             id: req.user._id, 
-            username:req.user.username
+            
         }
     });
     console.log(newSpot.address.geo);
@@ -72,7 +73,7 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
 
 //Display Page for Specific Spot
 router.get("/:id", function(req, res){
-    Spots.findById(req.params.id).populate("checkedIn").exec(function(err, foundSpot){
+    Spots.findById(req.params.id).populate("checkedIn").populate("comments").exec(function(err, foundSpot){
         if (err){
             console.log(err);
         } else {
@@ -203,6 +204,43 @@ router.put("/:id/uncheckin", middleware.isLoggedIn, function(req, res){
         res.redirect("back");
         }
     });
+});
+
+//===========================================
+//
+//
+//      Comments
+//
+//============================================
+router.post("/:id/comment/add", middleware.isLoggedIn, function(req, res){
+    var newComment = new Comments({
+        author:{ 
+            id: req.user._id,
+            username: req.user.username  
+        },
+        spot: req.params.id,
+        content: req.body.comment
+    });
+
+    Comments.create(newComment, function(err,newComment){
+        if(err){console.log(err);} else {        
+        console.log("Comment was created.");
+        }
+
+    });
+
+    Spots.findById(req.params.id, function(err, spot){
+        if(err){console.log(err)}
+        spot.comments.push(newComment._id);
+        spot.save();
+    });
+
+    Users.findById(req.user._id, function(err, user){
+        if(err){console.log(err);}
+        user.comments.push(newComment._id);
+        user.save();
+    });
+    res.redirect("back");
 });
 
 
