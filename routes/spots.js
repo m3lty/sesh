@@ -133,16 +133,47 @@ router.post("/:id/rate", middleware.isLoggedIn, function(req, res){
                 if (err){
                     console.log(err);
                 } else {
-                    //Doing the Math for averages of OverallRating
-                    var totalVotes = parseInt(spot.ratings.votes) + 1;
-                    var totalNum =  parseInt(spot.ratings.total) + parseInt(req.body.rating);
-                    var avg = totalNum / totalVotes ;  
+
+                    //OVERALL rating Block
+                    var overallTotal = parseInt(spot.ratings.overall.total) + parseInt(req.body.overallRating);
+                    var overallVotes = parseInt(spot.ratings.overall.votes) + 1 ;
+                    var overallAvg = overallTotal / overallVotes;
+                    
+                    var newOverall = {
+                        total: overallTotal,
+                        votes: overallVotes,
+                        avg: overallAvg,
+                    };
+                    
+                    var privacyTotal = parseInt(spot.ratings.privacy.total) + parseInt(req.body.privacyRating);
+                    var privacyVotes = parseInt(spot.ratings.privacy.votes) + 1 ;
+                    var privacyAvg = privacyTotal / privacyVotes;
+                    
+                    var newPrivacy = {
+                        total: privacyTotal,
+                        votes: privacyVotes,
+                        avg: privacyAvg,
+                    };                    
+                   
+                    var diffTotal = parseInt(spot.ratings.difficulty.total) + parseInt(req.body.difficultyRating);
+                    var diffVotes = parseInt(spot.ratings.difficulty.votes) + 1 ;
+                    var diffAvg = diffTotal / diffVotes;
+                    
+                    var newDiff = {
+                        total: diffTotal,
+                        votes: diffVotes,
+                        avg: diffAvg,
+                    };
+
                     var newRating = {
-                            ratings:{votes: totalVotes,
-                            total: totalNum,
-                            avg: avg.toFixed(1)
+                        ratings:{
+                            overall: newOverall,
+                            difficulty: newDiff,
+                            privacy: newPrivacy 
                         }
-                    } ;
+                    };
+//============================================================================
+
                     //Updating Spot model with 
                     Spots.findByIdAndUpdate(spot, newRating, function(err, updatedRating){
                         if(err){
