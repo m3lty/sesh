@@ -40,6 +40,7 @@
                     </select>
                     <button class="btn btn-sm" >Rate!</button>
                 </form>
+                
            <% } %>
         </div>
 
@@ -70,6 +71,7 @@
                         <button class="btn btn-caution">Cancel Check in.</button>
                     </form>
                 <% }}  %>
+                <li class="nav-item"><a class="nav-link" data-toggle="modal" href="#" data-target="#spotReview"><p>Rate!</p></a></li>
 
         </div>
     </div>
@@ -98,8 +100,10 @@
 </div>
 
 
+
+
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaJ5R-GLdIW9KPG1fQWm2LyjQC77x0Dk4&callback=initSmallMap">
 </script>
-
+<% include ../partials/spotreviewmodal %>
 <% include ../partials/footer %>

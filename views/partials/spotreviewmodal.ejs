@@ -1,0 +1,46 @@
+<div class="modal fade" id="spotReview" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="reviewSpotTitle">Review <%=singleSpot.name %></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="col-4">
+                <label for="overallRating">Overall Rating:</label>
+                <select name="overallRating">
+                    <% for(var i = 0; i <= 5; i++){ %>
+                        <option id="overallRating" value="<%= i %>"><%= i %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="col-4">
+                    <label for="difficultyRating">Difficulty Rating:</label>
+                    <select name="difficultyRating">
+                        <% for(var i = 0; i <= 5; i++){ %>
+                            <option id="difficultyRating" value="<%= i %>"><%= i %></option>
+                        <% } %>
+                    </select>
+            </div>
+            <div class="col-4">
+                    <label for="privacyRating">Privacy Rating:</label>
+                    <select name="privacyRating">
+                        <% for(var i = 0; i <= 5; i++){ %>
+                            <option id="privacyRating" value="<%= i %>"><%= i %></option>
+                        <% } %>
+                    </select>
+            </div>
+            <div class="col-12">
+                <label for="desc">Description</label>
+                <textarea required class="form-control" rows="5" id="desc" name="desc"></textarea>
+            </div>
+    
+    
+            <button name="button" class="btn btn-primary">Submit</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
