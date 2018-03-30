@@ -32,13 +32,8 @@
             <p><%=singleSpot.ratings.privacy.votes %> votes</p>
 
             <% if (currentUser && !currentUser.rated.toString().includes(singleSpot._id.toString())){ %>
-                <form action="/spots/<%=singleSpot._id %>/rate" method="POST">
-                    <select name="rating">
-                        <% for(var i = 0; i <= 5; i++){ %>
-                            <option value="<%= i %>"><%= i %></option>
-                        <% } %>
-                    </select>
-                    <button class="btn btn-sm" >Rate!</button>
+                <li class="nav-item"><a class="nav-link" ><p>Rate!</p></a></li>
+                    <button class="btn btn-sm"data-toggle="modal" href="#" data-target="#spotReview" >Rate!</button>
                 </form>
                 
            <% } %>
@@ -71,7 +66,7 @@
                         <button class="btn btn-caution">Cancel Check in.</button>
                     </form>
                 <% }}  %>
-                <li class="nav-item"><a class="nav-link" data-toggle="modal" href="#" data-target="#spotReview"><p>Rate!</p></a></li>
+                
 
         </div>
     </div>

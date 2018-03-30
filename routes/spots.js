@@ -142,7 +142,7 @@ router.post("/:id/rate", middleware.isLoggedIn, function(req, res){
                     var newOverall = {
                         total: overallTotal,
                         votes: overallVotes,
-                        avg: overallAvg,
+                        avg: overallAvg.toFixed(1),
                     };
                     
                     var privacyTotal = parseInt(spot.ratings.privacy.total) + parseInt(req.body.privacyRating);
@@ -152,7 +152,7 @@ router.post("/:id/rate", middleware.isLoggedIn, function(req, res){
                     var newPrivacy = {
                         total: privacyTotal,
                         votes: privacyVotes,
-                        avg: privacyAvg,
+                        avg: privacyAvg.toFixed(1),
                     };                    
                    
                     var diffTotal = parseInt(spot.ratings.difficulty.total) + parseInt(req.body.difficultyRating);
@@ -162,7 +162,7 @@ router.post("/:id/rate", middleware.isLoggedIn, function(req, res){
                     var newDiff = {
                         total: diffTotal,
                         votes: diffVotes,
-                        avg: diffAvg,
+                        avg: diffAvg.toFixed(1),
                     };
 
                     var newRating = {

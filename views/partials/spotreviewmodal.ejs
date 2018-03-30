@@ -8,38 +8,34 @@
           </button>
         </div>
         <div class="modal-body">
-            <div class="col-4">
-                <label for="overallRating">Overall Rating:</label>
-                <select name="overallRating">
-                    <% for(var i = 0; i <= 5; i++){ %>
-                        <option id="overallRating" value="<%= i %>"><%= i %></option>
-                    <% } %>
-                </select>
-            </div>
-            <div class="col-4">
-                    <label for="difficultyRating">Difficulty Rating:</label>
-                    <select name="difficultyRating">
+            <form action="/spots/<%=singleSpot._id %>/rate" method="POST">
+                <div class="col-4">
+                    <label for="overallRating">Overall Rating:</label>
+                    <select name="overallRating">
                         <% for(var i = 0; i <= 5; i++){ %>
-                            <option id="difficultyRating" value="<%= i %>"><%= i %></option>
+                            <option id="overallRating" value="<%= i %>"><%= i %></option>
                         <% } %>
                     </select>
-            </div>
-            <div class="col-4">
-                    <label for="privacyRating">Privacy Rating:</label>
-                    <select name="privacyRating">
-                        <% for(var i = 0; i <= 5; i++){ %>
-                            <option id="privacyRating" value="<%= i %>"><%= i %></option>
-                        <% } %>
-                    </select>
-            </div>
-            <div class="col-12">
-                <label for="desc">Description</label>
-                <textarea required class="form-control" rows="5" id="desc" name="desc"></textarea>
-            </div>
-    
-    
-            <button name="button" class="btn btn-primary">Submit</button>
-
+                </div>
+                <div class="col-4">
+                        <label for="difficultyRating">Difficulty Rating:</label>
+                        <select name="difficultyRating">
+                            <% for(var i = 0; i <= 5; i++){ %>
+                                <option id="difficultyRating" value="<%= i %>"><%= i %></option>
+                            <% } %>
+                        </select>
+                </div>
+                <div class="col-4">
+                        <label for="privacyRating">Privacy Rating:</label>
+                        <select name="privacyRating">
+                            <% for(var i = 0; i <= 5; i++){ %>
+                                <option id="privacyRating" value="<%= i %>"><%= i %></option>
+                            <% } %>
+                        </select>
+                </div>
+           
+                <button name="button" class="btn btn-primary">Submit</button>
+            </form>
         </div>
       </div>
     </div>
