@@ -56,7 +56,7 @@
         <% singleSpot.uploads.forEach(function(upload){ %>
             <img src="<%=upload.img%>" alt="Nope">
 
-        <% }) %>
+        <% }); %>
     </div>
     <!-- check in  -->
     <div class="row">
@@ -119,7 +119,7 @@
 
 
 
-<script async defer
+<script defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaJ5R-GLdIW9KPG1fQWm2LyjQC77x0Dk4&callback=initSmallMap">
 </script>
 <% include ../partials/spotreviewmodal %>
