@@ -14,6 +14,10 @@
         <div class="col">
             <div id="singleMap"></div>
         </div>
+        <!-- ==========================================
+
+            Showing Current Rating
+             ========================================== -->
         <div class="col-12">
             <% if (currentUser && singleSpot.author.id.equals(currentUser._id)){ %>
                 <form action="/spots/<%=singleSpot._id%>/edit" method="POST">
@@ -42,6 +46,15 @@
     </div>
     <div class="row">
         <div class="col-12">
+            <form action="#">
+                <input type="file" name="photoUpload" id="spotPhotoUpload">
+            </form>
+        </div>
+
+    </div>
+    <!-- check in  -->
+    <div class="row">
+        <div class="col-12">
             <h3>Users who have checked in:</h3>
         </div>
             <% singleSpot.checkedIn.forEach(function(user) { %>
@@ -51,7 +64,6 @@
             <% }) %>
     
     </div>
-    <!-- check in  -->
     <div class="row">
         <div class="col">
             <% if (currentUser && !currentUser.checkedIn.toString().includes(singleSpot._id.toString())){ %>
@@ -70,6 +82,9 @@
 
         </div>
     </div>
+        <!-- ======================
+    Show + Add Comments
+    ===================== -->
     <div class="row">
         <div class="col-12">
             <h3>Comments</h3>
@@ -80,6 +95,7 @@
             <% }) %>
         </div>
     </div>
+
     <div class="row">
         <div class="col-12">
             <% if (currentUser){ %>

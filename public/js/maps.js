@@ -176,3 +176,7 @@ function contentAdd(spot){
         $(".spotModal").remove();
     }
 }
+
+document.onload = function(){
+    console.log("It is connected");
+}
