@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
-var passportLocalMongoose = require("passport-local-mongoose");
-var UserSchema = new mongoose.Schema({
+const mongoose = require("mongoose");
+const passportLocalMongoose = require("passport-local-mongoose");
+const UserSchema = new mongoose.Schema({
 
   username: {
     type: String,
@@ -18,7 +18,12 @@ var UserSchema = new mongoose.Schema({
   password: String,
   avatar: {
     type:String,
-    default:"/img/placeholder-avatar.png"
+    default:"/img/placeholder-avatar.jpg"
+  },
+  links:{
+    twitter: String,
+    instagram: String,
+    other: String,
   },
   rated:[
     {
