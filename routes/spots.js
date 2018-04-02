@@ -8,6 +8,7 @@ var fs = require("fs");
 var Spots = require("../models/spot");
 var Users = require("../models/user");
 var Comments = require("../models/comment");
+var Photos = require("../models/photo");
 
 //Image upload
 var upload = multer({storage: multer.diskStorage({
@@ -68,12 +69,34 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
     })
 });
 //==============================================
+// Add Image
+//==============================================
+router.post("/:id/addphoto", middleware.isLoggedIn, upload.single("spotPhotoUpload"), function(req,res){
+    var newPhoto = new Photos({
+        img: req.file.path.slice(6),
+        spot: req.params.id,
+        author:{
+            id: req.user._id,
+            username: req.user.username
+        } 
+    });
+    Spots.findById(req.params.id, function(err,spot){
+        spot.uploads.push(newPhoto._id);
+        spot.save();
+    });
 
+    
+    Photos.create(newPhoto, function(err, newPhoto){
+        if(err){console.log(err);}
+        res.redirect("back");
+    });
+
+});
 
 
 //Display Page for Specific Spot
 router.get("/:id", function(req, res){
-    Spots.findById(req.params.id).populate("checkedIn").populate("comments").exec(function(err, foundSpot){
+    Spots.findById(req.params.id).populate("checkedIn").populate("comments").populate("uploads").exec(function(err, foundSpot){
         if (err){
             console.log(err);
         } else {

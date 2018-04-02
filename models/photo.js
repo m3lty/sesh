@@ -9,8 +9,11 @@ let PhotoSchema = new mongoose.Schema({
     },
 
     author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Users"
+        id:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Users"
+        },
+        username: String,
     },
 }, {usePushEach: true});
 

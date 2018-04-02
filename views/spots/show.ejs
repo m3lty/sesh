@@ -46,11 +46,17 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="#">
-                <input type="file" name="photoUpload" id="spotPhotoUpload">
+            <form action="/spots/<%=singleSpot.id%>/addphoto" enctype="multipart/form-data" method="POST">
+                <input type="file" name="spotPhotoUpload" id="spotPhotoUpload">
+                <button>Submit</button>
             </form>
         </div>
+    </div>
+    <div class="row">
+        <% singleSpot.uploads.forEach(function(upload){ %>
+            <img src="<%=upload.img%>" alt="Nope">
 
+        <% }) %>
     </div>
     <!-- check in  -->
     <div class="row">

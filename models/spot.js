@@ -3,6 +3,8 @@ var SpotSchema = new mongoose.Schema({
     name:String,
     //The initial uploaded Image - not tied directly to a user
     mainImg: String,
+
+
     //The Human Readable address initially entered by user
     address: {
       addr1: String,
@@ -81,7 +83,11 @@ var SpotSchema = new mongoose.Schema({
     comments: [{
       type:mongoose.Schema.Types.ObjectId,
       ref: "Comment"
-    }]
+    }],
+    uploads:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Photo"
+    }],
     
 
 },{usePushEach: true})
