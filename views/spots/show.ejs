@@ -2,75 +2,91 @@
 <% include ../partials/navbar %>
 
 <div class="container belowNav">
-    <div class="row">
-        <div class="col">
+    <div class="row" id="spotMain">
+        <div class="col" >
             <h1><%= singleSpot.name %></h1>
             <small><%= singleSpot.geo %></small>
-        </div>
-        <div class="col">
-            <img class="smallImg" src="<%=singleSpot.mainImg%>" alt="">
+            <img class="img-thumbnail" src="<%=singleSpot.mainImg%>" alt="">
             <p> <%= singleSpot.desc %></p>
         </div>
+        
         <div class="col">
             <div id="singleMap"></div>
-        </div>
-        <!-- ==========================================
-
-            Showing Current Rating
-             ========================================== -->
-        <div class="col-12">
             <% if (currentUser && singleSpot.author.id.equals(currentUser._id)){ %>
                 <form action="/spots/<%=singleSpot._id%>/edit" method="POST">
-                    <a href="/spots/<%=singleSpot._id %>/edit" class="btn btn-warning">Edit me</a>
+                    <a href="/spots/<%=singleSpot._id %>/edit" class="btn btn-sm  btn-warning">Edit me</a>
                 </form>
                 <form action="/spots/<%=singleSpot._id%>?_method=DELETE" method="POST">
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
                 </form>
                 
                 <% } %>
-            <p>Overall Rating: <%=singleSpot.ratings.overall.avg %> stars.</p>
-            <p><%=singleSpot.ratings.overall.votes %> votes</p>
-            <p>Difficulty Rating: <%=singleSpot.ratings.difficulty.avg %> stars.</p>
-            <p><%=singleSpot.ratings.difficulty.votes %> votes</p>
-            <p>Privacy Rating: <%=singleSpot.ratings.privacy.avg %> stars.</p>
-            <p><%=singleSpot.ratings.privacy.votes %> votes</p>
-
-            <% if (currentUser && !currentUser.rated.toString().includes(singleSpot._id.toString())){ %>
-                <li class="nav-item"><a class="nav-link" ><p>Rate!</p></a></li>
-                    <button class="btn btn-sm"data-toggle="modal" href="#" data-target="#spotReview" >Rate!</button>
-                </form>
-                
-           <% } %>
         </div>
 
+
+
+    </div>
+
+    <div class="row" id="spotRating">
+        <div class="col-3">
+            <p>Overall Rating: <%=singleSpot.ratings.overall.avg %> stars.</p>
+            <p><%=singleSpot.ratings.overall.votes %> votes</p>
+        </div>
+        <div class="col-3">        
+            <p>Difficulty Rating: <%=singleSpot.ratings.difficulty.avg %> stars.</p>
+            <p><%=singleSpot.ratings.difficulty.votes %> votes</p>
+        </div>
+        <div class="col-3">
+            <p>Privacy Rating: <%=singleSpot.ratings.privacy.avg %> stars.</p>
+            <p><%=singleSpot.ratings.privacy.votes %> votes</p>
+        </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <form action="/spots/<%=singleSpot.id%>/addphoto" enctype="multipart/form-data" method="POST">
-                <input type="file" name="spotPhotoUpload" id="spotPhotoUpload">
-                <button>Submit</button>
-            </form>
-        </div>
+            <% if (currentUser) { if(!currentUser.rated.toString().includes(singleSpot._id.toString())){ %>
+                <button class="btn btn-sm"data-toggle="modal" href="#" data-target="#spotReview" >Rate!</button>
+            <% }else {%>
+                <small>You have already rated this spot!</small>
+           <% }} %>
+            </div>
     </div>
-    <div class="row">
-        <% singleSpot.uploads.forEach(function(upload){ %>
-            <img class="smallImg" src="<%=upload.img%>" alt="Nope">
 
+
+    <!-- Displaying Thumbnails of images associated with Spot. -->
+    <div class="row spacer" id="spotPhotos">
+        <div class="col-12">
+            <h3>Photos of <%= singleSpot.name %></h3>
+        </div>
+        <% singleSpot.uploads.forEach(function(upload){ %>
+            <div class="col-3">
+                <a href="<%=upload.img %>"><img class="img-thumbnail" src="<%=upload.img%>" alt="Nope"></a>
+            </div>
         <% }); %>
     </div>
+    <div class="row spacer" id="spotAddPhoto" >
+            <div class="col-12">
+                <p>Upload your own photo</p>
+                <form action="/spots/<%=singleSpot.id%>/addphoto" enctype="multipart/form-data" method="POST">
+                    <input type="file" name="spotPhotoUpload" id="spotPhotoUpload">
+                    <button>Submit</button>
+                </form>
+            </div>
+        </div>
+
+
     <!-- check in  -->
-    <div class="row">
+    <div class="row spacer">
         <div class="col-12">
             <h3>Users who have checked in:</h3>
         </div>
             <% singleSpot.checkedIn.forEach(function(user) { %>
                 <div class="col-2">
-                <p><%= user.username %></p>
+                    <p><%= user.username %></p>
                 </div>                                
             <% }) %>
     
     </div>
-    <div class="row">
+    <div class="row spacer">
         <div class="col">
             <% if (currentUser && !currentUser.checkedIn.toString().includes(singleSpot._id.toString())){ %>
                 <form action="/spots/<%=singleSpot._id %>/checkin" method="POST">
@@ -88,21 +104,22 @@
 
         </div>
     </div>
+    
         <!-- ======================
     Show + Add Comments
     ===================== -->
-    <div class="row">
+    <div class="row spacer">
         <div class="col-12">
             <h3>Comments</h3>
             <% singleSpot.comments.forEach(function(comment){ %>
                 <p><%=comment.content%></p>
-                <small>Posted by: <%=comment.author.username %> | <%=comment.posted %></small>
+                <small>Posted by: <a href="/users/<%=comment.author.id%>"><%=comment.author.username %></a> | <%=comment.posted %></small>
 
             <% }) %>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row spacer">
         <div class="col-12">
             <% if (currentUser){ %>
                 <h3>Add a comment</h3>
@@ -113,6 +130,7 @@
            <% } %>
         </div>
     </div>
+
     
 </div>
 

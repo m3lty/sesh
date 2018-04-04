@@ -10,7 +10,7 @@ body{
     height: 100%;
 }
 #singleMap{
-    height: 500%;
+    height: 300px;
     width: 400px;
 }
 
@@ -214,4 +214,13 @@ body{
 
     }
   }
+/* ====================================================
 
+    Show SPOT
+==================================================== */
+#spotMain p {
+    font-size: 1.2em;
+}
+.spacer{
+    margin-top: 1em;
+}

@@ -54,7 +54,8 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
         author: {
             id: req.user._id, 
             
-        }
+        },
+        desc: req.body.desc,
     });
     console.log(newSpot.address.geo);
 
