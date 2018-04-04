@@ -4,8 +4,7 @@
     <div class="row">
         <div class="col-2">
             <h1><%=user.username %></h1>
-            <img src="<%=u
-            ser.avatar%>" alt="User Avatar" class="float-left rounded avatar">
+            <img src="<%=user.avatar%>" alt="User Avatar" class="float-left rounded avatar">
             <p><%=user.bio %></p>
             <% if (currentUser && user._id.equals(currentUser._id)){ %>
                 <a href=" <%= currentUser._id %>/edit"><p>Edit your profile.</p></a>

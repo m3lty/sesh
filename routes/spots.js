@@ -63,10 +63,10 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
             console.log("Trying to POST");
             console.log(err);
         } else {
-            console.log(newSpot.name + " was added in " + newSpot.state);
+            console.log(newSpot.name + " was added.");
             res.redirect("/");
         }
-    })
+    });
 });
 //==============================================
 // Add Image

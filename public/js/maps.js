@@ -19,7 +19,7 @@ var codedMarker = [];
 //Called on HOME PAGE only.
 function initMap() {
     var minZoom = 8;
-    var paCenter = {lat:40.925999, lng: -77.594152} //Initial location for map placement
+    var paCenter = {lat:40.925999, lng: -77.594152}; //Initial location for map placement
     geoCoder = new google.maps.Geocoder(); 
     // Create a map object and specify the DOM element for display.
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -27,28 +27,6 @@ function initMap() {
         zoom: minZoom,
         disableDefaultUI: true,
     });
-
-    //Imports Fusion Table of Google Maps data for a stoke + fill of the State
-    //TODO: Remove fill change stroke
-    // var layer = new google.maps.FusionTablesLayer({
-    //     map: map,
-    //     heatmap: { enabled: false },
-    //     query: {
-    //       select: "col3",
-    //       from: "1KluQrBgYfT-iSiOuwl-4TjuEAfMi4w5shjP2Hryg",
-    //       where: ""
-    //     },
-    //     styles: [{
-    //         polygonOptions: {
-    //            fillOpacity: 0.03,
-    //            fillColor: "#ffffff", 
-    //         }
-    //     }],
-    //     options: {
-          
-    //       templateId: 34
-    //     }
-    //   });
   
     //===================================================
     //draws the window - 300px wide
@@ -56,7 +34,7 @@ function initMap() {
         maxWidth: 300,
     });
     function geoCodeAddress(spot) {
-        var address = spot.address.geo
+        var address = spot.address.geo;
         console.log("Geocode called");
         console.log(address + "??");
         var loc = [];
@@ -78,7 +56,9 @@ function initMap() {
                 })(markers, i));   
             
             } else {
-                console.log("Geocode fucked up! Sorry!");
+                console.log(status);
+                console.log("Geocode slipped on " + spot.address.addr1);
+                
             }
         }); 
     }
