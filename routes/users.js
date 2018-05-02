@@ -84,7 +84,7 @@ router.put("/:id", upload.single("avatar"), function(req, res){
     //Updating user information from form
     user.bio = req.body.update.bio;
     user.save();
-    res.redirect("/");
+    res.redirect("back");
   }
 });
 })

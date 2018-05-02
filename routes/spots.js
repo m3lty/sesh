@@ -10,7 +10,10 @@ var Users = require("../models/user");
 var Comments = require("../models/comment");
 var Photos = require("../models/photo");
 
+
 //Image upload
+
+
 var upload = multer({storage: multer.diskStorage({
     destination: function(req, file, callback){
       callback(null, "public/img/spots");
@@ -26,6 +29,8 @@ router.get("/newspot",middleware.isLoggedIn, function(req, res){
 // NEW SPOT POST
 //================================
 router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, res){
+
+    
     var newSpot = new Spots({
         name: req.body.spotName,
         mainImg: req.file.path.slice(6),
@@ -57,7 +62,7 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
         },
         desc: req.body.desc,
     });
-    console.log(newSpot.address.geo);
+
 
     Spots.create(newSpot, function(err, newSpot){
         if (err){

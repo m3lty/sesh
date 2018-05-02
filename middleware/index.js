@@ -1,6 +1,7 @@
 var middlewareObj = {};
 var Spots = require("../models/spot")
-
+var markers = [{}];
+var geoCoder;
 middlewareObj.isLoggedIn = function(req, res, next){
   if(req.isAuthenticated()){
     return next();
@@ -30,5 +31,5 @@ middlewareObj.checkOwnership = function(req, res, next){
   } else {
     res.redirect("/");
   }
-}
+};
 module.exports = middlewareObj;

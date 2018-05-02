@@ -16,7 +16,7 @@ var codedMarker = [];
 
 
 //Intializes Full Page Google Map
-//Called on HOME PAGE only.
+//Called on HOME PAGE only.Called on HOME PAGE only.
 function initMap() {
     var minZoom = 8;
     var paCenter = {lat:40.925999, lng: -77.594152}; //Initial location for map placement
@@ -45,7 +45,8 @@ function initMap() {
                     position: results[0].geometry.location,
                     map: map
                 }) ; 
-        google.maps.event.addListener(markers, "click", (function(markers, i) {
+                console.log(markers.position.lat);
+                google.maps.event.addListener(markers, "click", (function(markers, i) {
                 return function() {
                         // content = contentAdd(spot[i]);
                         // infowindow.setContent(content);
