@@ -1,7 +1,7 @@
 # SESH
 # A web app for finding cool, local, hang-out spots. Off the beaten path, for hiking, biking, and just chillin.
 
-A small project to crate a social media platform for finding wooded, hidden, haunted, or otherwise clandestine locations.
+A small project to create a social media platform for finding wooded, hidden, haunted, or otherwise clandestine locations.
 This is a solo project just by me, and it's not moving very quickly. Please Look forward to it.
 ## Current Features
 * Custom Google map with locations and images.
