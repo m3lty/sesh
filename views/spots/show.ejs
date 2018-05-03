@@ -66,11 +66,13 @@
     </div>
     <div class="row spacer" id="spotAddPhoto" >
             <div class="col-12">
+                <% if (currentUser) { %>
                 <p>Upload your own photo</p>
                 <form action="/spots/<%=singleSpot.id%>/addphoto" enctype="multipart/form-data" method="POST">
                     <input type="file" name="spotPhotoUpload" id="spotPhotoUpload">
                     <button>Submit</button>
                 </form>
+                <% } %>
             </div>
         </div>
 
