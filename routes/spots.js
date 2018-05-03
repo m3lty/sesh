@@ -22,6 +22,8 @@ var upload = multer({storage: multer.diskStorage({
       callback(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
     }})
   });
+
+  
 //New Spot logic
 router.get("/newspot",middleware.isLoggedIn, function(req, res){
     res.render("spots/newspot");
