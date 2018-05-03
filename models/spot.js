@@ -16,6 +16,7 @@ var SpotSchema = new mongoose.Schema({
       },
       //Concat'd user input for use with Geocoding
       geo: String,
+      newgeo: {}
     },
 
     //Defines Author of Spot

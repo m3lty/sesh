@@ -40,7 +40,8 @@ router.post("/", middleware.isLoggedIn, upload.single("spotImg"), function(req, 
             zip: req.body.zip,
             state: "PA",
             geo: req.body.addr1 + " " + 
-                req.body.city + " PA " + req.body.zip,     
+                req.body.city + " PA " + req.body.zip,
+            newgeo: req.body.codedAddr     
         },
         ratings:{
             overall:{

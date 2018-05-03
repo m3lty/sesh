@@ -113,6 +113,29 @@ function initSmallMap(){
 
 
     
+};
+
+function geoNewUpload(){
+    addr1 = document.getElementById("addLine1").value;
+    city = document.getElementById("city").value;
+    zip = document.getElementById("zip").value;
+    var concatAddr = addr1 + " " + city + " PA " + zip;
+
+
+    console.log(concatAddr);
+    console.log("Wowsers");
+    geoCoder = new google.maps.Geocoder();
+    geoCoder.geocode({'address': concatAddr}, function(results, status){
+        if (status == "OK"){
+            var codedAddr = results[0].geometry;
+
+         console.log(results[0].geometry);   
+        } else {
+            console.log(status);
+        }
+    });
+    return true;
+    
 }
 
 
