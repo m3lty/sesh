@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+<% include ../partials/navbar %>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-9">
+      <h1 class="text-center">Edit <%= user.name %></h1>
+      <form action="/users/<%= user._id%>?_method=PUT" enctype="multipart/form-data" method="post">
+        <div class="form-group">
+          <img src="<%= user.avatar %>" alt="User Avatar" class="rounded avatar">
+          <h4>Change Avatar</h4>
+          <p class="small">(Your current avatar will be deleted)</p>
+          <input type="file" name="avatar" id="avatar">
+        </div>
+        <div class="form-group">
+          <h4>Bio</h4>
+          <textarea class="form-control" type="text" name="update[bio]"> <%=user.bio %> </textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-lg btn-primary btn-block">Submit</button>
+        </div>
+      </form>
+    <a href="/users/<%= user._id%>">Back to Profile</a>
+  </div>
+</div>
+</div>
+<% include ../partials/footer %>

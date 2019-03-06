@@ -1,20 +1,19 @@
-# SESH
-# A web app for finding cool, local, hang-out spots. Off the beaten path, for hiking, biking, and just chillin.
+# LFG
+# A web app for finding other local people interested in Tabletop Roleplaying Games.
 
-A small project to create a social media platform for finding wooded, hidden, haunted, or otherwise clandestine locations.
-This is a solo project just by me, and it's not moving very quickly. Please Look forward to it.
+
+This project relies heavily on code I wrote for my Sesh project, this code will be cleaned up eventually.
 ## Current Features
-* Custom Google map with locations and images.
-* Ability for Users to add additional locations.
-* Users can create an account with custom avatar.
-* Users can rate Locations on 3 different metrics.
-* Users can check in to locations.
-* Users may leave comments on locations.
-* Users may upload photos of locations.
+* Users can create an account with custom avatar and profile.
+* Users can create a Group with set locations, campaign description, and RPG system of choice.
+* Users may join other member's Groups to show interest in meeting up and playing.
+
 
 ## Planned Features
-* Ability to comment on user uploaded photos.
-* Expanded User profile system, including friends and comments.
+* Users will be able to leave comments on Group pages.
+* Users will be able to leave comments on other member's profiles.
+* Users will be able to mark themselves as a Game Master, or as willing to teach certain Systems.
+* Ability to make private tables which will require the owner's permission to join.
 
 ## Author
 * **Adam Hoffman** - [KD3TS](http://www.kd3ts.com)  

@@ -1,19 +1,25 @@
 <% include ../partials/header %>
-
+<div class="container">
+  <div class="row">
 <% users.forEach(function(users){ %>
-  <div class="col-md-3 col-sm-6">
-    <div class="thumbnail">
-      <img src=" <%= users.avatar %> " alt="user image">
+
+    <div class="col-sm-12 col-lg-4 ">
+      <a href="users/<%=users._id%>"> <div class="thumbnail">
+        <img class="smallImg" src="<%= users.avatar %>">
+      </div>
+      <div class="caption">
+        <h4> <%= users.username %> </h4>
+      </div>
+    </a>
+      <p><%= users.bio %> </p>
     </div>
-    <div class="caption">
-      <h4> <%= users.username %> </h4>
-    </div>
-    <p>
-      <a href="/users/<%= users._id %>" class="btn btn-primary">More Info</a>
-    </p>
-  </div>
+
+  
+
+
 <% }); %>
 
-
+</div>
+</div>
 
 <% include ../partials/footer %>

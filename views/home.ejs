@@ -1,14 +1,33 @@
 <% include partials/header %>
-<% include partials/navbar %>
- <div id="map"></div>
 
+<% include partials/signUp %>
 
-<div class="hidden lol">
-        <h1 class="iwHead"></h1>
+<div class="container">
+        <div class="row">
+                <div class="col">
+                        <div class="jumbotron">
+                        <h1 class="display-4">LFG</h1>
+                        <p class="lead">It's dangerous to go alone.. Make Friends.</p>
+                        <hr class="my-4">
+                        <p>This is a prototype of a service to find other Tabletop Gamers in your area.</p>
+                        <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                        <a class="btn btn-primary btn-lg" href="#" role="button">Sign In</a>
+                        </p>
+                </div>      
+                </div>
+        </div>
+        <div class="row justify-content-center">
+                
+                <div class="col-3 text-center">
+                         <% if (currentUser){ %>
+                                <p>Welcome, <%=currentUser.displayName %> </p>
+                                <a href="/users"><p>View Users</p></a>
+                        <!-- <% } else { %>
+                                <% include partials/loginForm%>
+                                <% } %> -->
+                        <p><a data-toggle="modal" data-target="#signUpModal" href="#">Join the resistance.</a></p>
+                </div>
+        </div>
 </div>
-
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKSrMxv2RwqRyFbEyWuKIwlvjHAo5dfyk&callback=initMap">    
-</script>
-
 <% include partials/footer %>

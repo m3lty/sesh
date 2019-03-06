@@ -26,6 +26,7 @@ body{
     margin: 0, auto;
 }
 /* NAV BAR */
+
 .navbar-dark{
     width: 100%;
     background-color: #442220;
@@ -36,7 +37,9 @@ body{
 
 
 }
-
+.container {
+    margin-top: 1em;
+}
 /* InfoBox  */
 .gm-style-iw{
     padding: 0;
@@ -172,8 +175,8 @@ body{
 
 ========================================== */
 #landing1{
-    background-color: #442220;
-    min-height: 500px;
+    background-color: #051014;
+    height: 30vh;
     color:white;
 
 }
@@ -190,8 +193,16 @@ body{
 }
 #landing2{
     padding-top: 5em;
-    min-height: 1000px;
-    background-color:#B0CA87;
+    height: 50vh;
+    background-image: url("../img/para2.jpg");
+    background-size: 100%;
+    background-position-y: -3em;
+    color: white;
+}
+#landing3{
+    padding-top: 5em;
+    height: 30vh;
+    background-color:#414746;
     color: white;
 }
 .img-thumbnail {
@@ -222,3 +233,28 @@ body{
 .spacer{
     margin-top: 1em;
 }
+
+
+
+#tableCheckbox {
+    padding: 1em;
+
+}
+
+/* Avatar Hover Stuff */
+.profileAvatar img{
+    max-width: 100%;
+  }
+  .profileAvatar span{
+    display: none;
+    position: absoulte;
+    background: #d4e2f9;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: inherit;
+  }
+  .profileAvatar:hover span{
+    display: flex;
+  }
+  

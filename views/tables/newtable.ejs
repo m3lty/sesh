@@ -1,0 +1,39 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col">
+           <h1>Create a table</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form action="/tables" enctype="application/x-www-form-urlencoded" method="POST">
+                <div class="form-group row">
+                    <div class="col-12">
+                        <label for="tableName">Campaign Name</label>
+                        <input type="text" name="tableName" id="tableName" class="form-control">              
+                    </div>
+                    <div class="col-4">
+                        <label for="systemName">System:</label>
+                        <input type="text" name="systemName" id="systemName" class="form-control">
+                    </div>
+                    <div class="col-4">
+                        <label for="locationTable">Location:</label>
+                        <input type="text" name="locationTable" id="locationTable" class="form-control">
+                    </div>
+                    <div class="col-12" id="tableCheckbox">
+                        <label class="form-check-label" for="needGm">Need GM?</label>
+                        <input type="checkbox" class="form-check-label" id="needGm">
+                    </div>
+                    <div class="col-12">
+                            <label for="descTable">Description</label>
+                            <textarea required class="form-control" rows="5" id="descTable" name="descTable"></textarea>
+                    </div>
+                    <button name="button" class="btn btn-primary">Submit</button>    
+                </div>   
+             </form>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>

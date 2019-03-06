@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+<div class="container">
+    <% tables.forEach(function(tables){ %>
+        <div class="row">
+            
+                <div class="col-4">
+                    <a href="<%= tables._id%>"><h3><%= tables.groupName %></h3></a>
+                </div>
+                <div class="col-4">
+                    <h4><%=tables.system %></h4>
+                    <h4><%=tables.location %></h4>
+                </div>
+                <div class="col-12">
+                    <p><%=tables.desc %></p>
+                </div>
+                <div class="col-12">
+                    <p class="small">Members:</p>
+                    <% tables.members.forEach(function(members){ %>
+                        <img class="smallImg" src="<%=members.avatar%>">
+                    <% }) %>
+                </div>
+            
+        </div>
+    <% }) %>
+</div>
+
+
+<% include ../partials/footer %>

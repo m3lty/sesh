@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
     index: true
 
   },
-  usernameId: String,   //Do I use this?
+  displayName: String,  
   email: String,
   usertype: {type: Number, default: 0}, //Mod Rights
   created: {type: Date, default:Date.now},
@@ -18,13 +18,20 @@ const UserSchema = new mongoose.Schema({
   password: String,
   avatar: {
     type:String,
-    default:"/img/placeholder-avatar.jpg"
+    default:"/img/avatar-placeholder.png"
   },
   links:{
     twitter: String,
     instagram: String,
     other: String,
   },
+  tables:[
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Tables"
+    },
+  ],
+
   rated:[
     {
       type: mongoose.Schema.Types.ObjectId,

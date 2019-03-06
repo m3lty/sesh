@@ -26,7 +26,7 @@ router.get("/", function(req, res){
     if (err){
       console.log(err);
     } else {
-      res.render("user/users", {users:users});
+      res.render("users/users", {users:users});
     }
   });
 });

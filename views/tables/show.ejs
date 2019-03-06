@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class = "row">
+        <div class="col-12">
+            <h2><%= singleTable.groupName %></h2>  
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <p><%=singleTable.desc%></p>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+            <p class="small">Members:</p>
+            <% singleTable.members.forEach(function(members){ %>
+                <div class="col-2">
+                <div class="imgToolTip profileAvatar">
+                    <a href="/members/<%= members._id %>">
+                    <img class="" src="<%=members.avatar%>" alt="user avatar">
+                    <span><%= members.username %></span>
+                    </a>
+                
+                </div>
+                <!-- <img class="smallImg" src="<%=members.avatar%>"> -->
+            </div>
+            <% }) %>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <% if (currentUser) { %>
+                <form action="/tables/<%=singleTable._id%>?_method=PUT" method="POST">
+                    <button class="btn btn-md">Join Group</button>
+                </form>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

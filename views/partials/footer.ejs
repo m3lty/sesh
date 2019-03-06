@@ -4,27 +4,8 @@ var url = window.location.href;
 
     </script>
     
-        <script>var spot; var user;</script>
+
         <script src="/js/main.js"></script>
-        <script src="/js/maps.js"></script>
-        <script>
-                        console.log("Bottom section ran");
-
-                        <% if (typeof allSpots !== 'undefined'){ %>
-                                var spots = <%- JSON.stringify(allSpots) %>;
-                        <% } %>
-                                
-                        <% if (typeof singleSpot !== 'undefined'){ %>
-                                var spots = <%- JSON.stringify(singleSpot) %>
-                        <% } %>
-
-                        <% if (currentUser) { %>
-                                var user = <%- JSON.stringify(currentUser) %>; 
-                        <% } %>
-                        syncVar(spots, user);
-
-                </script>
-        
 
 </body>
 </html>

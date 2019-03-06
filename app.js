@@ -6,13 +6,14 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const localStrategy = require("passport-local");
+
 const indexRoute = require("./routes/index");
-const spotRoute = require("./routes/spots");
+const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
+const tableRoute = require("./routes/tables");
 const methodOverride = require("method-override");
 
 var User = require("./models/user");
-var Spots = require("./models/spot");
 
 app.use(express.static(path.join(__dirname,'public')));
 app.set("view engine", "ejs");
@@ -20,6 +21,7 @@ app.set("view engine", "ejs");
 mongoose.connect("mongodb://localhost/sesh");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
 //PASSPORT SET UP==============================
 app.set('views', path.join(__dirname, 'views'));
 app.use(require("express-session")({
@@ -27,6 +29,7 @@ app.use(require("express-session")({
   resave: false,
   saveUninitialized: false
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -43,18 +46,15 @@ app.use(function(req, res, next){
 app.use(methodOverride("_method"));
 
 //Connecting route folders
-app.use("/", indexRoute);
-app.use("/spots", spotRoute);
+app.use("/", indexRoute, authRoute);
+
+
 app.use("/users", userRoute);
-//SHOWS SPOTS BY STATE
+
+app.use("/tables", tableRoute);
 
 
-app.listen(3000, function(){
-    console.log("Sesh is listening on port 3000");
+
+app.listen(8080, function(){
+    console.log("Sesh is listening on port 8080");
 });
-
-function stateMatch(spot) {
-    if(spot.state == req.params.id){
-        return true;
-    }
-}
